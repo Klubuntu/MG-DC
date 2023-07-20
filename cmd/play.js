@@ -1,4 +1,4 @@
-const {useMainPlayer, GuildQueue, useQueue} = require("discord-player");
+const {Player, GuildQueue, useQueue} = require("discord-player");
 const { YoutubeExtractor } = require("@discord-player/extractor");
 const { getEmoji, getEmbed } = require("../helpers/utils");
 
@@ -49,7 +49,6 @@ async function play(interaction) {
     }
     track_publishDate = res._data.tracks[0].__metadata.uploadedAt || ":record_button: Live";
     thumbnail_url = res._data.tracks[0].thumbnail;
-   //  console.log(res._data.tracks[0]);
     const voiceChannel = interaction.guild.members.cache.get(
       interaction.member.user.id
     ).voice.channelId;
@@ -68,7 +67,6 @@ async function play(interaction) {
     };
     try {
       playMsg = getEmbed(opt_playMsg);
-      //  console.log(playMsg)
       await interaction.channel.send({ embeds: [playMsg] });
     } catch (e) {
       console.error("[DEBUG]", e);
@@ -85,7 +83,7 @@ async function play(interaction) {
 }
 
 function runtime(interaction) {
-  const player = useMainPlayer();
+  const player = new Player(interaction.client);
   interaction.player = player;
   if (interaction.commandName === "play") {
     play(interaction);
