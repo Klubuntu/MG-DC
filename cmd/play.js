@@ -55,7 +55,7 @@ async function play(interaction) {
     console.log("[BOT] Playing", track_url);
     opt_playMsg = {
       color: 0x26d9a0,
-      title: `${getEmoji("music")} Playing ${track_name}`,
+      title: `${getEmoji("music")} Playing ${track_name} ;)`,
       url: track_url,
       desc: "by Manager :cd: https://manager-discord.netlify.app",
       img: thumbnail_url,
