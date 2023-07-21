@@ -84,8 +84,8 @@ function logAction(interaction){
 	mm = currentDate.getMinutes()
 	formated_date = `${y}-${m}-${d} ${hh}:${mm}`
 	__saveLogs(`-- ${formated_date} --`, timestamp)
-	console.log(`[ACTION] User > ${interaction.member.nickname} in [${interaction.guild.name}]`)
-	__saveLogs(`[ACTION] User > ${interaction.member.nickname} in [${interaction.guild.name}]`, timestamp)
+	console.log(`[ACTION] User > ${interaction.member.user.username} in [${interaction.guild.name}]`)
+	__saveLogs(`[ACTION] User > ${interaction.member.user.username} in [${interaction.guild.name}]`, timestamp)
 	console.log(`[BOT] Command ${interaction}`)
 	__saveLogs(`[BOT] Command ${interaction}`, timestamp)
 }
