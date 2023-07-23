@@ -1,5 +1,5 @@
 const {GuildQueuePlayerNode, useQueue} = require("discord-player");
-const {getEmoji, getEmbed, getSeekTime} = require("../helpers/utils");
+const {getEmoji, getEmbed, getSeconds} = require("../helpers/utils");
 const {convert} = require("discord-emoji-convert")
 
 async function queue(interaction){
@@ -33,7 +33,7 @@ async function queue(interaction){
    }
 }
 
-async function seek(interaction){
+async function seek(interaction, seconds=0){
    const queue = useQueue(interaction.guild.id);
    if(queue){
       console.log("[DEBUG] Seek - Queue exists")
@@ -41,34 +41,18 @@ async function seek(interaction){
          color: 0x8a40de,
          title: `${getEmoji("skip")} Rewinded song`
       }
-      seek = getEmbed(opts_seek)
-      interaction.reply({embeds: [seek]})
-      t_queue = new GuildQueuePlayerNode(queue)
-      skip_sec = interaction.options.getInteger("seconds");
-      await t_queue.seek(skip_sec)
-   }else{
-      interaction.reply(":cd: User not playing song")
-   }
-}
-
-async function moveto(interaction){
-   const queue = useQueue(interaction.guild.id);
-   if(queue){
-      console.log("[DEBUG] Seek - Queue exists")
-      opts_moveto = {
-         color: 0x8a40de,
-         title: `${getEmoji("skip")} Rewinded song`
+      seekEmbed = getEmbed(opts_seek)
+      interaction.reply({embeds: [seekEmbed]})
+      if(seconds <= 0){
+         skip_time = interaction.options.getInteger("seconds") * 1000;
       }
-      moveto = getEmbed(opts_moveto)
-      interaction.reply({embeds: [moveto]})
-      t_queue = new GuildQueuePlayerNode(queue)
-      skip_hours = interaction.options.getInteger("hours");
-      skip_min = interaction.options.getInteger("minutes");
-      skip_sec = interaction.options.getInteger("seconds");
-      console.log()
-      skip_time = getSeekTime(skip_hours, skip_min) + skip_sec
-      console.log("[DEBUG] Seeking to",skip_time, "sek")
-      await t_queue.seek(skip_time)
+      else{
+         skip_time = seconds * 1000
+      }
+      const currentTrackMaxDurationInMs = queue.currentTrack.durationMS;
+      console.log(currentTrackMaxDurationInMs)
+      console.log(skip_time)
+      await queue.node.seek(skip_time)
    }else{
       interaction.reply(":cd: User not playing song")
    }
@@ -116,7 +100,12 @@ function runtime(interaction){
       seek(interaction);
    }
    if (interaction.commandName === "moveto") {
-      moveto(interaction);
+      skip_hours = interaction.options.getInteger("hours");
+      skip_min = interaction.options.getInteger("minutes");
+      skip_sec = interaction.options.getInteger("seconds");
+      const skip_time = getSeconds(skip_hours, skip_min) + skip_sec
+      console.log(skip_time)
+      seek(interaction, skip_time);
    }
    if (interaction.commandName === "skip") {
       skip(interaction);
