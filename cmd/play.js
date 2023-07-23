@@ -97,7 +97,7 @@ async function play(interaction) {
       console.log("[BOT] Sorry, This type video/live not supported")
       opt_playMsg.img = null;
       opt_playMsg.fields = null;
-      opt_playMsg.desc =  ":x: Sorry, This type video/live not supported"
+      opt_playMsg.desc =  ":x: Sorry, This type video/live not supported ;("
       exceptMsg = getEmbed(opt_playMsg);
       interaction.followUp({embeds: [exceptMsg]})
     }
