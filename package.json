@@ -1,6 +1,6 @@
 {
   "name": "manager-music-dc",
-  "version": "3.0 BETA 1",
+  "version": "3.0 BETA 2",
   "description": "Easy play music on your server",
   "main": "bot.js",
   "scripts": {
