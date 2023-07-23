@@ -1,7 +1,7 @@
 const {ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
 const {getEmoji, getEmbed} = require("../helpers/utils");
 
-async function help(interaction, action=""){
+async function help(interaction, action){
    opts_help = {
       color: 0x4f4e4c,
       title: `${getEmoji('book')} Help with Manager DC`,
@@ -67,23 +67,23 @@ async function help(interaction, action=""){
       const opt_help = interaction.options.getSubcommand()
       try {
          if(opt_help == "info"){
-            const playback = new ButtonBuilder()
-            .setCustomId('playback')
+            const btn_playback = new ButtonBuilder()
+            .setCustomId('btn_playback')
             .setLabel('🎧 Playback')
             .setStyle(ButtonStyle.Success);
    
-            const queue = new ButtonBuilder()
-            .setCustomId('queue')
+            const btn_queue = new ButtonBuilder()
+            .setCustomId('btn_queue')
             .setLabel('⏳ Queue')
             .setStyle(ButtonStyle.Secondary);
    
-            const support = new ButtonBuilder()
-            .setCustomId('support')
+            const btn_support = new ButtonBuilder()
+            .setCustomId('btn_support')
             .setLabel('💵 Support')
             .setStyle(ButtonStyle.Danger);
    
             const row = new ActionRowBuilder()
-            .addComponents(playback, queue, support);
+            .addComponents(btn_playback, btn_queue, btn_support);
             interaction.reply({embeds: [getHelp], components: [row]})
          }
          else if(opt_help == "playback"){
@@ -103,24 +103,12 @@ async function help(interaction, action=""){
 
 }
 
-function runtime(interaction){
-   client = interaction.client
-   client.on("interactionCreate", async (interaction) => {
-      if(interaction.isButton()) {
-         btnID = interaction.customId
-         if(btnID == "playback"){
-            help(interaction, "playback")
-         }
-         else if(btnID == "queue"){
-            help(interaction, "queue")
-         }
-         else if(btnID == "support"){
-            help(interaction, "support")
-         }
-      }
-   });
+function runtime(interaction, action=""){
    if (interaction.commandName === "help") {
       help(interaction);
+   }
+   else if (action.length > 0){
+      help(interaction, action);
    }
 }
 

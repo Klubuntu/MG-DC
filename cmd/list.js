@@ -6,6 +6,18 @@ const { logAction } = require('../helpers/utils');
 
 function setupCommands(client) {
    client.on("interactionCreate", async (interaction) => {
+      if(interaction.isButton()) {
+         btnID = interaction.customId
+         if(btnID == "btn_playback"){
+            helpFunctions(interaction, "playback")
+         }
+         else if(btnID == "btn_queue"){
+            helpFunctions(interaction, "queue")
+         }
+         else if(btnID == "btn_support"){
+            helpFunctions(interaction, "support")
+         }
+      }
       (async () => {
          await new Player(interaction.client, {
             useLegacyFFmpeg: false,
