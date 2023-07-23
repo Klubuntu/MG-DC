@@ -41,16 +41,24 @@ async function seek(interaction, seconds=0){
          color: 0x8a40de,
          title: `${getEmoji("skip")} Rewinded song`
       }
-      seekEmbed = getEmbed(opts_seek)
-      interaction.reply({embeds: [seekEmbed]})
       if(seconds <= 0){
          skip_time = interaction.options.getInteger("seconds") * 1000;
       }
       else{
          skip_time = seconds * 1000
       }
-      const currentTrackMaxDurationInMs = queue.currentTrack.durationMS;
-      await queue.node.seek(skip_time)
+      const currentTrackDuration = queue.currentTrack.durationMS;
+      if (skip_time > currentTrackDuration - 1000) {
+         opts_seek.title = ":x: User entered a duration longer than the track";
+         seekEmbed = getEmbed(opts_seek)
+         interaction.reply({embeds: [seekEmbed]})
+      }
+      else{
+         seekEmbed = getEmbed(opts_seek)
+         interaction.reply({embeds: [seekEmbed]})
+         await queue.node.seek(skip_time)
+      }
+
    }else{
       interaction.reply(":cd: User not playing song")
    }
@@ -102,7 +110,6 @@ function runtime(interaction){
       skip_min = interaction.options.getInteger("minutes");
       skip_sec = interaction.options.getInteger("seconds");
       const skip_time = getSeconds(skip_hours, skip_min) + skip_sec
-      console.log(skip_time)
       seek(interaction, skip_time);
    }
    if (interaction.commandName === "skip") {
