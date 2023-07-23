@@ -1,3 +1,4 @@
+const {Player} = require("discord-player");
 const playFunctions = require('./play')
 const stateFunctions = require('./state')
 const queueFunctions = require('./queue');
