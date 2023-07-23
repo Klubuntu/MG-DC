@@ -1,12 +1,12 @@
-const {GuildQueuePlayerNode, useQueue} = require("discord-player");
+const {useQueue} = require("discord-player");
 const {getEmoji, getEmbed, getSeconds} = require("../helpers/utils");
 const {convert} = require("discord-emoji-convert")
 
 async function queue(interaction){
-   const queue = useQueue(interaction.guild.id);
-   if(queue){
+   const getQueue = useQueue(interaction.guild.id);
+   if(getQueue){
       try{
-         tracks = queue.tracks.toArray()
+         tracks = getQueue.tracks.toArray()
          tracks_raw = tracks[0].raw
          opts_queue = {
             color: 0x8a40de,
@@ -34,8 +34,8 @@ async function queue(interaction){
 }
 
 async function seek(interaction, seconds=0){
-   const queue = useQueue(interaction.guild.id);
-   if(queue){
+   const getQueue = useQueue(interaction.guild.id);
+   if(getQueue){
       console.log("[DEBUG] Seek - Queue exists")
       opts_seek = {
          color: 0x8a40de,
@@ -56,7 +56,7 @@ async function seek(interaction, seconds=0){
       else{
          seekEmbed = getEmbed(opts_seek)
          interaction.reply({embeds: [seekEmbed]})
-         await queue.node.seek(skip_time)
+         await getQueue.node.seek(skip_time)
       }
 
    }else{
@@ -65,34 +65,32 @@ async function seek(interaction, seconds=0){
 }
 
 async function skip(interaction){
-   const queue = useQueue(interaction.guild.id);
-   if(queue){
+   const getQueue = useQueue(interaction.guild.id);
+   if(getQueue){
       console.log("[DEBUG] Skip - Queue exists")
       opts_skip = {
          color: 0xde703a,
          title: `${getEmoji("skip")} Skipped Song`
       }
-      skip = getEmbed(opts_skip)
-      interaction.reply({embeds: [skip]})
-      t_queue = new GuildQueuePlayerNode(queue)
-      await t_queue.skip()
+      skipEmbed = getEmbed(opts_skip)
+      interaction.reply({embeds: [skipEmbed]})
+      await getQueue.node.skip()
    }else{
       interaction.reply(":cd: User not playing songs")
    }
 }
 
 async function stop(interaction){
-   const queue = useQueue(interaction.guild.id);
-   if(queue){
+   const getQueue = useQueue(interaction.guild.id);
+   if(getQueue){
       console.log("[DEBUG] Stop - Queue exists")
       opts_stop = {
          color: 0xd62424,
          title: `${getEmoji("stop")} Stopped playing queue`
       }
-      stop = getEmbed(opts_stop)
-      interaction.reply({embeds: [stop]})
-      t_queue = new GuildQueuePlayerNode(queue)
-      await t_queue.stop(true)
+      stopEmbed = getEmbed(opts_stop)
+      interaction.reply({embeds: [stopEmbed]})
+      await getQueue.node.stop(true)
    }else{
       interaction.reply(":cd: User not playing song")
    }
