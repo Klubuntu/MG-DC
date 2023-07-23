@@ -1,4 +1,4 @@
-const {Player, GuildQueue, useQueue} = require("discord-player");
+const {useMainPlayer, GuildQueue, useQueue} = require("discord-player");
 const { YoutubeExtractor } = require("@discord-player/extractor");
 const { getEmoji, getEmbed } = require("../helpers/utils");
 
@@ -49,13 +49,14 @@ async function play(interaction) {
     }
     track_publishDate = res._data.tracks[0].__metadata.uploadedAt || ":record_button: Live";
     thumbnail_url = res._data.tracks[0].thumbnail;
+   //  console.log(res._data.tracks[0]);
     const voiceChannel = interaction.guild.members.cache.get(
       interaction.member.user.id
     ).voice.channelId;
     console.log("[BOT] Playing", track_url);
     opt_playMsg = {
       color: 0x26d9a0,
-      title: `${getEmoji("music")} Playing ${track_name} ;)`,
+      title: `${getEmoji("music")} Playing ${track_name}`,
       url: track_url,
       desc: "by Manager :cd: https://manager-discord.netlify.app",
       img: thumbnail_url,
@@ -69,7 +70,6 @@ async function play(interaction) {
       playMsg = getEmbed(opt_playMsg);
       await interaction.channel.send({ embeds: [playMsg] });
     } catch (e) {
-      console.error("[DEBUG]", e);
       console.error("[BOT] Missing permission for send messages");
     }
   
@@ -79,11 +79,10 @@ async function play(interaction) {
       },
     });
   }
-
 }
 
 function runtime(interaction) {
-  const player = new Player(interaction.client);
+  const player = useMainPlayer();
   interaction.player = player;
   if (interaction.commandName === "play") {
     play(interaction);
