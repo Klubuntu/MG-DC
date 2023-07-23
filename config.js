@@ -125,8 +125,30 @@ module.exports = {
          description: 'Display the next songs in the queue',
       },
       {
-         name: 'help',
-         description: 'View all commands'
-      }
+         name: "help",
+         description: "View all commands",
+         options: [
+            {
+               name: "playback",
+               description: "Playback Commands",
+               type: 1,
+            },
+            {
+               name: "queue",
+               description: "Queue Commands",
+               type: 1,
+            },
+            {
+               name: "support",
+               description: "Support Author",
+               type: 1,
+            },
+            {
+               name: "info",
+               description: "Commands info",
+               type: 1,
+            },
+         ]
+      },
    ]
 }

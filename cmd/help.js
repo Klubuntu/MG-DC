@@ -1,10 +1,18 @@
+const {ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
 const {getEmoji, getEmbed} = require("../helpers/utils");
 
-async function help(interaction){
+async function help(interaction, action=""){
    opts_help = {
       color: 0x4f4e4c,
       title: `${getEmoji('book')} Help with Manager DC`,
       desc: ">> Bot Commands",
+      fields: [
+         { name: '/help playback', value: 'View playback commands'},
+         { name: '/help queue', value: 'View queue commands'},
+         { name: '/help support', value: 'Support Project / Help Server'},
+         { name: '/help info', value: 'View this message'},
+         { name: 'You can click any button to view next commands', value:'[Colorful buttons below]'}
+      ]
    }
    opts_help_playback = {
       color: 0x4f4e4c,
@@ -44,18 +52,73 @@ async function help(interaction){
    getPlayback = getEmbed(opts_help_playback)
    getQueue = getEmbed(opts_help_queue)
    getSupport = getEmbed(opts_help_support)
-   interaction.reply({embeds: [getHelp]})
-   try {
-     await interaction.channel.send({ embeds: [getPlayback] });
-     await interaction.channel.send({ embeds: [getQueue] });
-     await interaction.channel.send({ embeds: [getSupport] });
-   } catch (e) {
-     console.error("[DEBUG]", e);
-     console.error("[BOT] Missing permission for send messages");
+   if(action.length > 0){
+      if(action == "playback"){
+         interaction.reply({embeds: [getPlayback]});
+      }
+      else if(action == "queue"){
+         interaction.reply({embeds: [getQueue]});
+      }
+      else if(action == "support"){
+         interaction.reply({embeds: [getSupport]});
+      }
    }
+   else{
+      const opt_help = interaction.options.getSubcommand()
+      try {
+         if(opt_help == "info"){
+            const playback = new ButtonBuilder()
+            .setCustomId('playback')
+            .setLabel('🎧 Playback')
+            .setStyle(ButtonStyle.Success);
+   
+            const queue = new ButtonBuilder()
+            .setCustomId('queue')
+            .setLabel('⏳ Queue')
+            .setStyle(ButtonStyle.Secondary);
+   
+            const support = new ButtonBuilder()
+            .setCustomId('support')
+            .setLabel('💵 Support')
+            .setStyle(ButtonStyle.Danger);
+   
+            const row = new ActionRowBuilder()
+            .addComponents(playback, queue, support);
+            interaction.reply({embeds: [getHelp], components: [row]})
+         }
+         else if(opt_help == "playback"){
+            interaction.reply({embeds: [getPlayback]});
+         }
+         else if(opt_help == "queue"){
+            interaction.reply({embeds: [getQueue]});
+         }
+         else if(opt_help == "support"){
+            interaction.reply({embeds: [getSupport]});
+         }
+      } catch (e) {
+         console.error("[DEBUG]", e);
+         console.error("[BOT] Missing permission for reply to user");
+      }
+   }
+
 }
 
 function runtime(interaction){
+   client = interaction.client
+   client.on("interactionCreate", async (interaction) => {
+      if(interaction.isButton()) {
+         btnID = interaction.customId
+         if(btnID == "playback"){
+            help(interaction, "playback")
+         }
+         else if(btnID == "queue"){
+            help(interaction, "queue")
+         }
+         else if(btnID == "support"){
+            help(interaction, "support")
+         }
+      }
+   });
    if (interaction.commandName === "help") {
       help(interaction);
    }
