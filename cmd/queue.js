@@ -50,8 +50,6 @@ async function seek(interaction, seconds=0){
          skip_time = seconds * 1000
       }
       const currentTrackMaxDurationInMs = queue.currentTrack.durationMS;
-      console.log(currentTrackMaxDurationInMs)
-      console.log(skip_time)
       await queue.node.seek(skip_time)
    }else{
       interaction.reply(":cd: User not playing song")
