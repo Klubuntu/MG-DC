@@ -10,7 +10,7 @@
   <a href="https://github.com/klubuntu/MG-DC/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
-  <a href="https://github.com/klubuntu/MG-DC/blob/master/LICENSE" target="_blank">
+  <a href="https://github.com/klubuntu/MG-DC/blob/main/LICENSE" target="_blank">
     <img alt="License: GPL" src="https://img.shields.io/github/license/klubuntu/MG-DC" />
   </a>
       <a href="https://discord.gg/meKqTdUDDm">
@@ -51,4 +51,4 @@ Give a ⭐️ if you like this project !
 ## 📝 License
 
 Copyright © 2023 [Klubuntu](https://github.com/klubuntu).<br />
-This project is [GPL](https://github.com/klubuntu/MG-DC/blob/master/LICENSE) licensed.
+This project is [GPL](https://github.com/klubuntu/MG-DC/blob/main/LICENSE) licensed.
