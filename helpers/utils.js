@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { EmbedBuilder } = require('discord.js');
-const version = "v3.0 BETA 1"
+const version = "v3.0 BETA 2"
 
 function getEmbed(opt){
    const embed = new EmbedBuilder()
@@ -54,7 +54,7 @@ function getEmoji(emojiname){
 	}
 }
 
-function getSeekTime(h=0, m=0){
+function getSeconds(h=0, m=0){
 	sec_hours = 3600 * h
 	sec_min = 60 * m
 	seconds = sec_hours + sec_min
@@ -93,6 +93,6 @@ function logAction(interaction){
 module.exports = {
 	getEmbed: getEmbed,
 	getEmoji: getEmoji,
-	getSeekTime: getSeekTime,
+	getSeconds: getSeconds,
 	logAction: logAction,
 }
