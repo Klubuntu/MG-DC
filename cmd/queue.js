@@ -60,7 +60,7 @@ async function seek(interaction, seconds=0){
       }
 
    }else{
-      interaction.reply(":cd: User not playing song")
+      interaction.reply(":cd: User no song to skip")
    }
 }
 
