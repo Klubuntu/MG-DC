@@ -1,7 +1,7 @@
 const {ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
 const {getEmoji, getEmbed} = require("../helpers/utils");
 
-async function help(interaction, action){
+async function help(interaction, action=""){
    opts_help = {
       color: 0x4f4e4c,
       title: `${getEmoji('book')} Help with Manager DC`,
