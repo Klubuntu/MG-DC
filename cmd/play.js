@@ -1,6 +1,6 @@
-const {useMainPlayer, GuildQueue, useQueue} = require("discord-player");
+const {useMainPlayer} = require("discord-player");
 require("@discord-player/extractor");
-const { getEmoji, getEmbed } = require("../helpers/utils");
+const {getEmoji, getEmbed} = require("../helpers/utils");
 
 async function play(interaction) {
   const player = interaction.player;
