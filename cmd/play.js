@@ -38,7 +38,7 @@ async function play(interaction) {
       track_duration = res._data.tracks[0].duration;
     }
     catch{
-      interaction.channel.send(":x: Sorry, playing from this method not available at this time ")
+      interaction.channel.send(":x: Sorry, playing from this method not available at this time\n> If you playing outside youtube, remove `_` from your query `" + query + "`")
       return '';
     }
     if(track_duration == "0:00"){
