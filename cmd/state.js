@@ -1,11 +1,10 @@
-const {GuildQueuePlayerNode, useQueue } = require("discord-player");
+const {useQueue } = require("discord-player");
 const { getEmoji, getEmbed } = require("../helpers/utils");
 
 async function progress(interaction){
-   queue = useQueue(interaction.guild.id)
-   if(queue){
-      t_queue = new GuildQueuePlayerNode(queue)
-      progress_queue = t_queue.createProgressBar()
+   getQueue = useQueue(interaction.guild.id)
+   if(getQueue){
+      progress_queue = getQueue.node.createProgressBar()
       console.log("[DEBUG] Progress - Queue exists")
       opts_prog = {
          color: 0xeda915,
@@ -14,8 +13,8 @@ async function progress(interaction){
          desc: progress_queue
        }
       try{
-         opts_prog.title = queue.history.currentTrack.title
-         opts_prog.url = queue.history.currentTrack.url
+         opts_prog.title = getQueue.history.currentTrack.title
+         opts_prog.url = getQueue.history.currentTrack.url
          prog = getEmbed(opts_prog)
          interaction.reply({embeds: [prog]})
       }
@@ -31,8 +30,8 @@ async function progress(interaction){
 
 
 async function pause(interaction) {
-   queue = useQueue(interaction.guild.id)
-   if(queue){
+   getQueue = useQueue(interaction.guild.id)
+   if(getQueue){
     console.log("[DEBUG] Pause - Queue exists")
     opts_pause = {
       color: 0xeda915,
@@ -40,16 +39,15 @@ async function pause(interaction) {
     }
     pause = getEmbed(opts_pause)
     interaction.reply({embeds: [pause]})
-    t_queue = new GuildQueuePlayerNode(queue)
-    await t_queue.pause()
+    await getQueue.node.pause()
    }else{
       interaction.reply(":cd: User not playing song")
    }
 }
 
 async function resume(interaction) {
-   queue = useQueue(interaction.guild.id)
-   if(queue){
+   getQueue = useQueue(interaction.guild.id)
+   if(getQueue){
     console.log("[DEBUG] Resume - Queue exists")
     opts_resume = {
       color: 0x4d8ceb,
@@ -57,8 +55,7 @@ async function resume(interaction) {
     }
     resume = getEmbed(opts_resume)
     interaction.reply({embeds: [resume]})
-    t_queue = new GuildQueuePlayerNode(queue)
-    await t_queue.resume()
+    await getQueue.node.resume()
    }else{
       interaction.reply(":cd: User not playing song")
    }
@@ -74,7 +71,6 @@ function runtime(interaction){
    if (interaction.commandName === "resume") {
       resume(interaction);
    }
-   
 }
 
 module.exports = runtime
