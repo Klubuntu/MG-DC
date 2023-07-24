@@ -57,7 +57,7 @@ async function resume(interaction) {
     interaction.reply({embeds: [resume]})
     await getQueue.node.resume()
    }else{
-      interaction.reply(":cd: User not playing song")
+      interaction.reply(":cd: User not have song to play")
    }
 }
 
