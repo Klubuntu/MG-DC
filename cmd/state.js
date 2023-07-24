@@ -61,6 +61,26 @@ async function resume(interaction) {
    }
 }
 
+async function volume(interaction){
+   getQueue = useQueue(interaction.guild.id)
+   if(getQueue){
+      volumeLevel = interaction.options.getInteger("level")
+      if(!volumeLevel){
+         interaction.reply(":speaker: The current volume set is: " + getQueue.node.volume)
+      }
+      else if(volumeLevel <= 200){
+         await getQueue.node.setVolume(volumeLevel)
+         interaction.reply(":speaker: Changed volume to " + volumeLevel)
+      }
+      else{
+         interaction.reply(":x: User set undefined volume level")
+      }
+   }
+   else{
+      interaction.reply(":x: User not playing song")
+   }
+}
+
 function runtime(interaction){
    if (interaction.commandName === "progress") {
       progress(interaction);
@@ -70,6 +90,9 @@ function runtime(interaction){
    }
    if (interaction.commandName === "resume") {
       resume(interaction);
+   }
+   if (interaction.commandName === "volume") {
+      volume(interaction);
    }
 }
 

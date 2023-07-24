@@ -125,6 +125,17 @@ module.exports = {
          description: 'Display the next songs in the queue',
       },
       {
+         name: 'volume',
+         description: 'Check/Change playing song volume',
+         options: [
+            {
+               name: "level",
+               description: "Volume Level (max 200)",
+               type: 4,
+            },
+         ]
+      },
+      {
          name: "help",
          description: "View all commands",
          options: [
