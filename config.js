@@ -18,24 +18,24 @@ module.exports = {
          description: 'Internal test2',
          options: [
             {
-                name: 'query',
-                description: 'Query / URL',
-                type: 3,
-                required: true,
+               name: 'query',
+               description: 'Query / URL',
+               type: 3,
+               required: true,
             },
-        ],  
+         ],  
       },
       {
          name: 'test-play-queue',
          description: 'Internal test3',
          options: [
             {
-                name: 'query',
-                description: 'Query / URL',
-                type: 3,
-                required: true,
+               name: 'query',
+               description: 'Query / URL',
+               type: 3,
+               required: true,
             },
-        ], 
+         ], 
       },
       {
          name: 'test-pause',
@@ -60,12 +60,48 @@ module.exports = {
          description: 'Play music from Youtube',
          options: [
             {
-                name: 'query',
-                description: 'Query / URL',
-                type: 3,
-                required: true,
+               name: 'query',
+               description: 'Query / URL',
+               type: 3,
+               required: true,
             },
-        ],
+            {
+               name: 'source',
+               description: 'Select Media Service (only for search)',
+               type: 3,
+               required: false,
+               choices: [
+                  {
+                     name: "Spotify",
+                     value: "spotifySearch"
+                  },
+                  {
+                     name: "YouTube",
+                     value: "youtube"
+                  },
+                  {
+                     name: "Soundcloud",
+                     value: "soundcloud"
+                  },
+                  {
+                     name: "Apple Music",
+                     value: "appleMusicSearch"
+                  },
+                  {
+                     name: "Facebook",
+                     value: "facebook"
+                  },
+                  {
+                     name: "ReverbNation",
+                     value: "reverbnation"
+                  },
+                  {
+                     name: "Vimeo",
+                     value: "vimeo"
+                  }
+               ]
+            },
+         ],
       },
       {
          name: 'pause',
@@ -88,21 +124,21 @@ module.exports = {
          description: 'Rewind music (in seconds)',
          options: [
             {
-                name: 'seconds',
-                description: 'Seconds to skip in the song',
-                type: 4,
-                required: true,
+               name: 'seconds',
+               description: 'Seconds to skip in the song',
+               type: 4,
+               required: true,
             },
-        ],
+         ],
       },
       {
          name: 'moveto',
          description: 'Rewind music (in hour/min)',
          options: [
             {
-                name: 'hours',
-                description: 'Hours to move in the song',
-                type: 4,
+               name: 'hours',
+               description: 'Hours to move in the song',
+               type: 4,
             },
             {
                name: 'minutes',
