@@ -57,7 +57,7 @@ module.exports = {
    commands: [
       {
          name: 'play',
-         description: 'Play music from Youtube',
+         description: 'Play music using query or URL',
          options: [
             {
                name: 'query',
