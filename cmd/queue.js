@@ -37,7 +37,7 @@ async function seek(interaction, seconds=0){
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
       console.log("[DEBUG] Seek - Queue exists")
-      opts_seek = {
+      seekEmbedData = {
          color: 0x8a40de,
          title: `${getEmoji("skip")} Rewinded song`
       }
@@ -47,18 +47,17 @@ async function seek(interaction, seconds=0){
       else{
          skip_time = seconds * 1000
       }
-      const currentTrackDuration = queue.currentTrack.durationMS;
+      const currentTrackDuration = getQueue.currentTrack.durationMS | 0;
       if (skip_time > currentTrackDuration - 1000) {
          opts_seek.title = ":x: User entered a duration longer than the track";
-         seekEmbed = getEmbed(opts_seek)
+         seekEmbed = getEmbed(seekEmbedData)
          interaction.reply({embeds: [seekEmbed]})
       }
       else{
-         seekEmbed = getEmbed(opts_seek)
+         seekEmbed = getEmbed(seekEmbedData)
          interaction.reply({embeds: [seekEmbed]})
          await getQueue.node.seek(skip_time)
       }
-
    }else{
       interaction.reply(":cd: User no song to skip")
    }
