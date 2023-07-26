@@ -44,7 +44,8 @@ async function help(interaction, action=""){
          { name: `${getEmoji('dc')} Report Bugs / Ideas - Support Server`, value: 'https://discord.gg/meKqTdUDDm'},
          { name: `${getEmoji('redbox')} Become a Patreon`, value: 'https://patreon.com/klubuntu'},
          { name: `${getEmoji('coffe')} Buy Me a Coffie`, value: 'https://www.buymeacoffee.com/klubuntu'},
-         { name: `${getEmoji('tasks')} To-Do`, value: 'Add actions to player song, suppport other langs\nSupport other music services (like: Spotify, SoundCloud etc.)'},
+         { name: `${getEmoji('tasks')} To-Do`, value: 'Add actions to player\nSupport other languages (Starting from: :flag_pl: PL, :flag_de: DE, :flag_fr: FR, :flag_jp: JP)'},
+         { name: `:bulb: Ideas/Bugs`, value: 'If you have any issues, please report to\nhttps://github.com/Klubuntu/MG-DC/issues'},
          { name: `${getEmoji('pc')} Source Code`, value: 'https://github.com/klubuntu/MG-DC'}
       ]
    }
