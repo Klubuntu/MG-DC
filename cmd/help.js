@@ -6,13 +6,13 @@ async function help(interaction, action=""){
    opts_help = {
       color: 0x4f4e4c,
       title: `${getEmoji('book')} ${config.help.info.title}`,
-      desc: '>>' + config.help.desc,
+      desc: '>> ' + config.help.desc,
       fields: [
          { name: '/help playback', value: config.help.info.playback[0].value},
          { name: '/help queue', value: config.help.info.queue[0].value},
          { name: '/help support', value: config.help.info.support[0].value},
          { name: '/help info', value: config.help.info.info[0].value},
-         { name: config.help.info.buttons[0].name, value: '[' + config.help.info.buttons[0].value + ']'}
+         { name: config.help.info.buttons[0].name, value: '[' + config.help.info.buttons[1].value + ']'}
       ]
    }
    opts_help_playback = {
@@ -46,7 +46,7 @@ async function help(interaction, action=""){
          { name: `${getEmoji('redbox')} ${config.help.support.patreon}`, value: 'https://patreon.com/klubuntu'},
          { name: `${getEmoji('coffe')} ${config.help.support.coffee}`, value: 'https://www.buymeacoffee.com/klubuntu'},
          { name: `${getEmoji('tasks')} ${config.help.support.to_do}`, value: 'Add actions to player\nSupport other languages (Starting from: :flag_pl: PL, :flag_de: DE, :flag_fr: FR, :flag_jp: JP)'},
-         { name: `:bulb: ${config.help.support.help_code[0].name}`, value: `${config.help.support.help_code[0].issues}\nhttps://github.com/Klubuntu/MG-DC/issues`},
+         { name: `:bulb: ${config.help.support.help_code[0].name}`, value: `${config.help.support.help_code[1].issues}\nhttps://github.com/Klubuntu/MG-DC/issues`},
          { name: `${getEmoji('pc')} ${config.help.support.source_code}`, value: 'https://github.com/klubuntu/MG-DC'}
       ]
    }
@@ -71,17 +71,17 @@ async function help(interaction, action=""){
          if(opt_help == "info"){
             const btn_playback = new ButtonBuilder()
             .setCustomId('btn_playback')
-            .setLabel('🎧 ' + config.help.info.buttons.playback)
+            .setLabel('🎧 ' + config.help.info.buttons[2].playback)
             .setStyle(ButtonStyle.Success);
    
             const btn_queue = new ButtonBuilder()
             .setCustomId('btn_queue')
-            .setLabel('⏳ ' + config.help.info.buttons.queue)
+            .setLabel('⏳ ' + config.help.info.buttons[3].queue)
             .setStyle(ButtonStyle.Secondary);
    
             const btn_support = new ButtonBuilder()
             .setCustomId('btn_support')
-            .setLabel('💵 ' + config.help.info.buttons.support)
+            .setLabel('💵 ' + config.help.info.buttons[4].support)
             .setStyle(ButtonStyle.Danger);
    
             const row = new ActionRowBuilder()
