@@ -16,11 +16,11 @@ async function progress(interaction){
       try{
          opts_prog.title = getQueue.history.currentTrack.title
          opts_prog.url = getQueue.history.currentTrack.url
-         prog = getEmbed(opts_prog)
+         prog = getEmbed(opts_prog, interaction.locale)
          interaction.reply({embeds: [prog]})
       }
       catch{
-         prog = getEmbed(opts_prog)
+         prog = getEmbed(opts_prog, interaction.locale)
          interaction.reply({embeds: [prog]})
       }
 
@@ -39,7 +39,7 @@ async function pause(interaction) {
       color: 0xeda915,
       title: `${getEmoji("pause")} ${config.messages.pause[0].paused}`
     }
-    pause = getEmbed(opts_pause)
+    pause = getEmbed(opts_pause, interaction.locale)
     interaction.reply({embeds: [pause]})
     await getQueue.node.pause()
    }else{
@@ -56,7 +56,7 @@ async function resume(interaction) {
       color: 0x4d8ceb,
       title: `${getEmoji("play")} ${config.messages.resume[0].resumed}`
     }
-    resume = getEmbed(opts_resume)
+    resume = getEmbed(opts_resume, interaction.locale)
     interaction.reply({embeds: [resume]})
     await getQueue.node.resume()
    }else{

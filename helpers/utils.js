@@ -2,7 +2,7 @@ const fs = require('fs');
 const { EmbedBuilder } = require('discord.js');
 const version = "v3.0 BETA 2"
 
-function getEmbed(opt){
+function getEmbed(opt, locale="en"){
    const embed = new EmbedBuilder()
 	.setColor(opt.color || 0xFFFFFF)
 	.setTitle(opt.title || "Manager Discord")
