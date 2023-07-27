@@ -75,7 +75,8 @@
       - stopped: Stopped playing queue
     seek:
       - seeked: Rewinded song
-      - longer-duration: User entered a duration longer than the track
+      - longer_duration: User entered a duration longer than the track
+      - no_song: User no song to seek
     queue:
       - title: Queue List / Next Songs
       - track: Track
@@ -84,4 +85,4 @@
     volume:
       - level: The current volume set is
       - set: Changed volume to
-      - max-level: User set too high volume level. Max volume is 200%
+      - max_level: User set too high volume level. Max volume is 200%
