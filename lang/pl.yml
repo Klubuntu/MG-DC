@@ -85,4 +85,4 @@
     volume:
       - level: The current volume set is
       - set: Changed volume to
-      - max-level: User set too high volume level. Max volume is 200%
+      - max_level: User set too high volume level. Max volume is 200%
