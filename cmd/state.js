@@ -1,4 +1,4 @@
-const {useQueue } = require("discord-player");
+const {useQueue} = require("discord-player");
 const { getEmoji, getEmbed } = require("../helpers/utils");
 
 async function progress(interaction){

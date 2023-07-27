@@ -1,21 +1,28 @@
 {
-  "name": "manager-music-dc",
-  "version": "3.0 BETA 2",
-  "description": "Easy play music on your server",
+  "name": "manager-music-dev-rework",
+  "version": "3.0",
+  "description": "",
   "main": "bot.js",
   "scripts": {
     "start": "node --no-warnings bot.js",
+    "public": "node --no-warnings bot-public.js",
+    "dm": "node dm.js",
     "test": "Test not exists"
   },
-  "author": "Klubuntu",
-  "license": "GPL",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@discord-player/extractor": "^4.4.0",
     "@discordjs/opus": "^0.9.0",
+    "axios": "^1.4.0",
     "discord-emoji-convert": "^2.1.2",
     "discord-player": "^6.6.1",
     "discord.js": "^14.11.0",
     "ffmpeg-static": "^5.1.0",
+    "m3u8-file-parser": "^0.2.4",
+    "m3u8-parser": "^7.0.0",
+    "toml": "^3.0.0",
+    "yaml": "^2.3.1",
     "ytdl-core": "^4.11.5"
   }
 }

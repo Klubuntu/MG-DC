@@ -1,6 +1,7 @@
 const {useMainPlayer} = require("discord-player");
 require("@discord-player/extractor");
-const {getEmoji, getEmbed} = require("../helpers/utils");
+const {getEmoji} = require("../helpers/utils");
+const {useEmbed} = require("../helpers/embeds");
 
 async function play(interaction) {
   const player = interaction.player;
@@ -31,50 +32,17 @@ async function play(interaction) {
     } else {
       res = await player.search(query);
     }
-
     try{
       track_url = res._data.tracks[0].url;
-      track_name = res._data.tracks[0].title;
       track_duration = res._data.tracks[0].duration;
     }
     catch{
       interaction.channel.send(":x: Sorry, playing from this method not available at this time\n> If you playing outside youtube, remove `_` from your query `" + query + "`")
-      return '';
+      return;
     }
-    if(track_duration == "0:00"){
-      track_duration = "Live"
-    }
-    track_publishDate = res._data.tracks[0].__metadata.uploadedAt || "Unavailable";
-    thumbnail_url = res._data.tracks[0].thumbnail;
-    track_source = res._data.extractor?.constructor.name.replaceAll("Extractor", "")
-    console.log(track_source)
     const voiceChannel = interaction.guild.members.cache.get(
       interaction.member.user.id
     ).voice.channelId;
-    console.log("[BOT] Playing", track_url);
-    opt_playMsg = {
-      color: 0x26d9a0,
-      title: `${getEmoji("music")} Playing ${track_name}`,
-      url: track_url,
-      desc: "by Manager :cd: https://manager-discord.netlify.app",
-      img: thumbnail_url,
-      fields: [
-        {name: "Playing from", value: ":headphones: "+ track_source, inline: true},
-        // { name: "Channel", value: `<#${voiceChannel}>`, inline: true },
-        { name: "Duration", value: track_duration, inline: true },
-        { name: "Publish Date", value: track_publishDate, inline: true },
-      ],
-    };
-    if(res._data.queryType != "youtube"){
-      opt_playMsg.img = null;
-      opt_playMsg.thumb = thumbnail_url
-    }
-    try {
-      playMsg = getEmbed(opt_playMsg);
-      await interaction.channel.send({ embeds: [playMsg] });
-    } catch (e) {
-      console.error("[BOT] Missing permission for send messages");
-    }
     try{
       await player.play(channel, track_url, {
         nodeOptions: {
@@ -82,15 +50,35 @@ async function play(interaction) {
         },
       });
     }
-    catch{
+    catch(e){
+      console.error(e);
       console.log("[BOT] Sorry, This type video/live not supported")
-      opt_playMsg.img = null;
-      opt_playMsg.fields = null;
-      opt_playMsg.desc =  ":x: Sorry, This type video/live not supported"
-      exceptMsg = getEmbed(opt_playMsg);
-      interaction.followUp({embeds: [exceptMsg]})
+      interaction.followUp({embeds: [useEmbed(res._data.tracks[0], "error")]})
     }
   }
+}
+
+const fetch = require('node-fetch');
+
+// Function to fetch the M3U URL and extract the audio URL
+async function getAudioUrlFromM3U(m3uUrl) {
+  try {
+    const response = await fetch(m3uUrl);
+    const m3uData = await response.text();
+    // Assuming the audio URL is the first line of the M3U file
+    const audioUrl = m3uData.split('\n')[0].trim();
+    return audioUrl;
+  } catch (error) {
+    console.error('Error fetching M3U URL:', error);
+    return null;
+  }
+}
+
+async function playURL(interaction){
+  const player = interaction.player;
+  const channel = interaction.member.voice.channel;
+  let url = interaction.options.getString("url");
+  console.log("[DEBUG]", url)
 }
 
 function runtime(interaction) {
@@ -98,6 +86,9 @@ function runtime(interaction) {
   interaction.player = player;
   if (interaction.commandName === "play") {
     play(interaction);
+  }
+  if (interaction.commandName === "play-online"){
+    playURL(interaction);
   }
 }
 

@@ -1,2 +1,8 @@
 node_modules
+lang/dev
+dm.js
 config.js
+logs/
+package-lock.json
+temp.m3u
+bot-public.js

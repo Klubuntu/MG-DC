@@ -1,6 +1,7 @@
 const {Client, GatewayIntentBits, REST, Routes, ActivityType} = require("discord.js");
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildVoiceStates] });
 const {config, commands} = require("./config")
+// const {setupCommandsTest} = require("./tests/list")
 const {setupCommands} = require("./cmd/list")
 const rest = new REST({ version: '10' }).setToken(config.TOKEN);
 
@@ -23,6 +24,7 @@ client.on("ready", () => {
    }, 15000);
    const timestamp = Date.now();
    client.rundate = timestamp
+   // setupCommandsTest(client)
    setupCommands(client)
 });
 

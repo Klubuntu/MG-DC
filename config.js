@@ -1,7 +1,12 @@
 module.exports = {
    config: {
-      TOKEN: "[YOUR_TOKEN]",
-      CLIENTID: "[YOUR_CLIENTID]",
+      TOKEN: "OTQxNDEyNTkwNzQ2MjI2NzEx.GYh7DN.G4A-Z7Q5AvGHH9KBvr_9Q3FZgVyczWdu1_h360",
+      CLIENTID: "941412590746226711",
+      StatusList: ["🧩 MG v3: /help", "🎁 Open-source code", "🤖 by Klubuntu"]
+   },
+   configpublic: {
+      TOKEN: "OTE5OTQwNjIwNDU2NDQzOTM1.GKvdvJ.ugOtldBK2obmbUoK0YHT-4vx_QQdLFdPwW5UGI",
+      CLIENTID: "919940620456443935",
       StatusList: ["🧩 MG v3: /help", "🎁 Open-source code", "🤖 by Klubuntu"]
    },
    commands_test: [
@@ -18,24 +23,24 @@ module.exports = {
          description: 'Internal test2',
          options: [
             {
-               name: 'query',
-               description: 'Query / URL',
-               type: 3,
-               required: true,
+                name: 'query',
+                description: 'Query / URL',
+                type: 3,
+                required: true,
             },
-         ],  
+        ],  
       },
       {
          name: 'test-play-queue',
          description: 'Internal test3',
          options: [
             {
-               name: 'query',
-               description: 'Query / URL',
-               type: 3,
-               required: true,
+                name: 'query',
+                description: 'Query / URL',
+                type: 3,
+                required: true,
             },
-         ], 
+        ], 
       },
       {
          name: 'test-pause',
@@ -99,9 +104,21 @@ module.exports = {
                      name: "Vimeo",
                      value: "vimeo"
                   }
-               ]
+              ]
             },
          ],
+      },
+      {
+         name: "play-online",
+         description: "Play M3U/RTMP content from url",
+         options: [
+            {
+               name: 'url',
+               description: 'URL',
+               type: 3,
+               required: true,
+            },
+         ]
       },
       {
          name: 'pause',

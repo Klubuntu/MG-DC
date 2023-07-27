@@ -1,0 +1,87 @@
+- help:
+    desc: Bot Commands
+    info:
+      title: Help with Manager DC
+      playback:
+        - value: View playback commands
+      queue:
+        - value: View queue commands
+      support:
+        - value: Support Project / Help Server
+      info:
+        - value: View this message
+      buttons:
+        - name: You can click any button to view next commands
+        - value: Colorful buttons below
+        - playback: Playback
+        - queue: Queue
+        - support: Support
+    playback:
+      title: Playback commands
+      play:
+        - value: View playback commands
+      progress:
+        - value: Display progress playing current song
+      pause:
+        - value: Pause current song
+      resume:
+        - value: Resume paused song
+    queue:
+      title: Queue commands
+      queue:
+        - value: Display songs in the Queue
+      skip:
+        - value: Skip next song in the Queue
+      seek:
+        - value: Forward song using seconds
+      moveto:
+        - value: Forward song using hours/minutes/seconds
+      stop:
+        - value: Stop playback songs / clear Queue
+    support:
+      title: Support Author
+      server: Report Bugs / Ideas - Support Server
+      patreon: Become a Patreon
+      coffee: Buy Me a Coffee
+      to_do: To-Do
+      help_code:
+        - name: Help with Code
+        - issues: If you have any issues, please report to
+      source_code: Source Code
+- messages:
+    missing_permission: Missing permission for send messages
+    user_not_connected: User not joined to voice channel
+    user_not_playing: User not playing song
+    user_not_song_skip: User no song to skip
+    work: Work with
+    love_music: Love music
+    play:
+      - searching: Searching for
+      - playing: Playing
+      - playing_from: Playing from
+      - duration: Duration
+      - publish_date: Publish Date
+      - unknown: Unavailable
+      - unsupported: Sorry, This type video/live not supported
+      - method_no_available: Sorry, playing from this method not available at this time
+      - change_prefix: If you playing outside youtube, remove `_` from your query
+    pause:
+      - paused: Playing / Queue paused
+    resume:
+      - resumed: Playing / Queue resumed
+    skip:
+      - skipped: Skipped Song
+    stop:
+      - stopped: Stopped playing queue
+    seek:
+      - seeked: Rewinded song
+      - longer-duration: User entered a duration longer than the track
+    queue:
+      - title: Queue List / Next Songs
+      - track: Track
+      - added: Added to Queue
+      - empty: Queue Empty, no added next songs to play
+    volume:
+      - level: The current volume set is
+      - set: Changed volume to
+      - max-level: User set too high volume level. Max volume is 200%

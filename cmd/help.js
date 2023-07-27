@@ -2,51 +2,52 @@ const {ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
 const {getEmoji, getEmbed} = require("../helpers/utils");
 
 async function help(interaction, action=""){
+   const config = interaction.locale_config
    opts_help = {
       color: 0x4f4e4c,
-      title: `${getEmoji('book')} Help with Manager DC`,
-      desc: ">> Bot Commands",
+      title: `${getEmoji('book')} ${config.help.info.title}`,
+      desc: '>>' + config.help.desc,
       fields: [
-         { name: '/help playback', value: 'View playback commands'},
-         { name: '/help queue', value: 'View queue commands'},
-         { name: '/help support', value: 'Support Project / Help Server'},
-         { name: '/help info', value: 'View this message'},
-         { name: 'You can click any button to view next commands', value:'[Colorful buttons below]'}
+         { name: '/help playback', value: config.help.info.playback[0].value},
+         { name: '/help queue', value: config.help.info.queue[0].value},
+         { name: '/help support', value: config.help.info.support[0].value},
+         { name: '/help info', value: config.help.info.info[0].value},
+         { name: config.help.info.buttons[0].name, value: '[' + config.help.info.buttons[0].value + ']'}
       ]
    }
    opts_help_playback = {
       color: 0x4f4e4c,
-      title: `${getEmoji('music')} Playback commands`,
-      desc: "Bot Commands",
+      title: `${getEmoji('music')} ${config.help.playback.title}`,
+      desc: config.help.desc,
       fields: [
-         { name: '/play', value: 'Play music from Query or URL'},
-         { name: '/progress', value: 'Display progress playing current song'},
-         { name: '/pause', value: 'Pause current song'},
-         { name: '/resume', value: 'Resume paused song'}
+         { name: '/play', value: config.help.playback.play[0].value},
+         { name: '/progress', value: config.help.playback.progress[0].value},
+         { name: '/pause', value: config.help.playback.pause[0].value},
+         { name: '/resume', value: config.help.playback.resume[0].value}
       ]
    }
    opts_help_queue = {
       color: 0x4f4e4c,
-      title: `${getEmoji('skip')} Queue commands`,
+      title: `${getEmoji('skip')} ${config.help.queue.title}`,
       desc: "Bot Commands",
       fields: [
-         { name: '/queue', value: 'Display songs in the Queue'},
-         { name: '/skip', value: 'Skip next song in the Queue'},
-         { name: '/seek', value: 'Forward song using seconds'},
-         { name: '/moveto', value: 'Forward song using hours/minutes/seconds'},
-         { name: '/stop', value: 'Stop playback songs / Clear Queue'}
+         { name: '/queue', value: config.help.queue.queue[0].value},
+         { name: '/skip', value: config.help.queue.skip[0].value},
+         { name: '/seek', value: config.help.queue.seek[0].value},
+         { name: '/moveto', value: config.help.queue.skip[0].value},
+         { name: '/stop', value: config.help.queue.moveto[0].value}
       ]
    }
    opts_help_support = {
       color: 0xad0e0e,
-      title: `${getEmoji('search')} Support Author`,
+      title: `${getEmoji('search')} ${config.help.support.title}`,
       fields: [
-         { name: `${getEmoji('dc')} Report Bugs / Ideas - Support Server`, value: 'https://discord.gg/meKqTdUDDm'},
-         { name: `${getEmoji('redbox')} Become a Patreon`, value: 'https://patreon.com/klubuntu'},
-         { name: `${getEmoji('coffe')} Buy Me a Coffie`, value: 'https://www.buymeacoffee.com/klubuntu'},
-         { name: `${getEmoji('tasks')} To-Do`, value: 'Add actions to player\nSupport other languages (Starting from: :flag_pl: PL, :flag_de: DE, :flag_fr: FR, :flag_jp: JP)'},
-         { name: `:bulb: Ideas/Bugs`, value: 'If you have any issues, please report to\nhttps://github.com/Klubuntu/MG-DC/issues'},
-         { name: `${getEmoji('pc')} Source Code`, value: 'https://github.com/klubuntu/MG-DC'}
+         { name: `${getEmoji('dc')} ${config.help.support.server}`, value: 'https://discord.gg/meKqTdUDDm'},
+         { name: `${getEmoji('redbox')} ${config.help.support.patreon}`, value: 'https://patreon.com/klubuntu'},
+         { name: `${getEmoji('coffe')} ${config.help.support.coffee}`, value: 'https://www.buymeacoffee.com/klubuntu'},
+         { name: `${getEmoji('tasks')} ${config.help.support.to_do}`, value: 'Add actions to player\nSupport other languages (Starting from: :flag_pl: PL, :flag_de: DE, :flag_fr: FR, :flag_jp: JP)'},
+         { name: `:bulb: ${config.help.support.help_code[0].name}`, value: `${config.help.support.help_code[0].issues}\nhttps://github.com/Klubuntu/MG-DC/issues`},
+         { name: `${getEmoji('pc')} ${config.help.support.source_code}`, value: 'https://github.com/klubuntu/MG-DC'}
       ]
    }
    getHelp = getEmbed(opts_help)
@@ -70,17 +71,17 @@ async function help(interaction, action=""){
          if(opt_help == "info"){
             const btn_playback = new ButtonBuilder()
             .setCustomId('btn_playback')
-            .setLabel('🎧 Playback')
+            .setLabel('🎧 ' + config.help.info.buttons.playback)
             .setStyle(ButtonStyle.Success);
    
             const btn_queue = new ButtonBuilder()
             .setCustomId('btn_queue')
-            .setLabel('⏳ Queue')
+            .setLabel('⏳ ' + config.help.info.buttons.queue)
             .setStyle(ButtonStyle.Secondary);
    
             const btn_support = new ButtonBuilder()
             .setCustomId('btn_support')
-            .setLabel('💵 Support')
+            .setLabel('💵 ' + config.help.info.buttons.support)
             .setStyle(ButtonStyle.Danger);
    
             const row = new ActionRowBuilder()
@@ -98,7 +99,7 @@ async function help(interaction, action=""){
          }
       } catch (e) {
          console.error("[DEBUG]", e);
-         console.error("[BOT] Missing permission for reply to user");
+         console.error(`[BOT] ${help.messages.missing_permission}`);
       }
    }
 

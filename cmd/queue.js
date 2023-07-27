@@ -8,7 +8,7 @@ async function queue(interaction){
       try{
          tracks = getQueue.tracks.toArray()
          tracks_raw = tracks[0].raw
-         opts_queue = {
+         queueEmbedData = {
             color: 0x8a40de,
             title: `${getEmoji("music")} Queue List / Next Songs`
          }
@@ -20,7 +20,7 @@ async function queue(interaction){
             num += 1
          }
          opts_queue.fields = queue_list
-         listQueue = getEmbed(opts_queue)
+         listQueue = getEmbed(seekEmbedData)
          interaction.reply({embeds: [listQueue]}) 
        }
        catch{
@@ -67,13 +67,13 @@ async function skip(interaction){
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
       console.log("[DEBUG] Skip - Queue exists")
-      opts_skip = {
+      skipEmbedData = {
          color: 0xde703a,
          title: `${getEmoji("skip")} Skipped Song`
       }
-      skipEmbed = getEmbed(opts_skip)
-      interaction.reply({embeds: [skipEmbed]})
-      await getQueue.node.skip()
+      skipEmbed = getEmbed(skipEmbedData)
+      interaction.reply({embeds: [skipEmbedData]})
+      getQueue.node.skip()
    }else{
       interaction.reply(":cd: User not playing songs")
    }
@@ -83,13 +83,13 @@ async function stop(interaction){
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
       console.log("[DEBUG] Stop - Queue exists")
-      opts_stop = {
+      stopEmbedData = {
          color: 0xd62424,
          title: `${getEmoji("stop")} Stopped playing queue`
       }
-      stopEmbed = getEmbed(opts_stop)
+      stopEmbed = getEmbed(stopEmbedData)
       interaction.reply({embeds: [stopEmbed]})
-      await getQueue.node.stop(true)
+      getQueue.node.stop(true)
    }else{
       interaction.reply(":cd: User not playing song")
    }

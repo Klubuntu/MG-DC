@@ -4,9 +4,13 @@ const stateFunctions = require('./state')
 const queueFunctions = require('./queue');
 const helpFunctions = require('./help');
 const { logAction } = require('../helpers/utils');
+const setupEvents = require('../helpers/actions');
+const setUserLanguage = require('../helpers/lang_parser')
 
 function setupCommands(client) {
    client.on("interactionCreate", async (interaction) => {
+      const userLocale = interaction.user?.locale || 'en';
+      interaction.locale_config = await setUserLanguage(userLocale);
       if(interaction.isButton()) {
          btnID = interaction.customId
          if(btnID == "btn_playback"){
@@ -20,7 +24,7 @@ function setupCommands(client) {
          }
       }
       (async () => {
-         await new Player(interaction.client, {
+         const player = await new Player(interaction.client, {
             useLegacyFFmpeg: false,
             ytdlOptions: {
                quality: 'highestaudio',
@@ -31,12 +35,13 @@ function setupCommands(client) {
                   }
                }
             }
-        });
+         });
+         setupEvents(player)
          playFunctions(interaction)
          stateFunctions(interaction)
          queueFunctions(interaction)
          helpFunctions(interaction)
-         //logAction(interaction) // Comment this to disable logging user commands
+         logAction(interaction) // Comment this to disable logging user commands
       })();
       if (!interaction.isChatInputCommand()) return;
    });

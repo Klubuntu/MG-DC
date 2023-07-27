@@ -21,6 +21,8 @@ function getEmoji(emojiname){
 	switch(emojiname){
 		case 'love':
 			return ':heart';
+		case 'clock':
+			return ':clock4:';
 		case 'search':
 			return ':mag:';
 		case 'music':
