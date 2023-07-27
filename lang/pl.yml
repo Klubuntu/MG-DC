@@ -1,91 +1,91 @@
 - help:
-    desc: Bot Commands
+    desc: Polecenia Bota
     info:
-      title: Help with Manager DC
+      title: Pomoc dotycząca Managera DC
       playback:
-        - value: View playback commands
+        - value: Wyświetl dostępne polecenia odtwarzania
       queue:
-        - value: View queue commands
+        - value: Wyświetl dostępne polecenia kolejki
       support:
-        - value: Support Project / Help Server
+        - value: Wsparcie dla Projektu / Serwer Pomocy
       info:
-        - value: View this message
+        - value: Wyświetl tę wiadomość
       buttons:
-        - name: You can click any button to view next commands
-        - value: Colorful buttons below
-        - playback: Playback
-        - queue: Queue
-        - support: Support
+        - name: Możesz kliknąć dowolny przycisk, aby zobaczyć kolejne polecenia
+        - value: Kolorowe przyciski poniżej
+        - playback: Odtwarzanie
+        - queue: Kolejka
+        - support: Wsparcie
     playback:
-      title: Playback commands
+      title: Komendy odtwarzania
       play:
-        - value: View playback commands
+        - value: Wyświetl dostępne polecenia odtwarzania
       progress:
-        - value: Display progress playing current song
+        - value: Wyświetl postęp odtwarzania bieżącej piosenki
       pause:
-        - value: Pause current song
+        - value: Wstrzymaj bieżącą piosenkę
       resume:
-        - value: Resume paused song
+        - value: Wznów zatrzymaną piosenkę
     queue:
-      title: Queue commands
+      title: Komendy kolejki
       queue:
-        - value: Display songs in the Queue
+        - value: Wyświetl utwory w kolejce
       skip:
-        - value: Skip next song in the Queue
+        - value: Pominięcie następnej piosenki w kolejce
       seek:
-        - value: Forward song using seconds
+        - value: Przewijanie piosenki o określoną liczbę sekund
       moveto:
-        - value: Forward song using hours/minutes/seconds
+        - value: Przewijanie piosenki o określoną liczbę godzin/minut/sekund
       stop:
-        - value: Stop playback songs / clear Queue
+        - value: Zatrzymaj odtwarzanie piosenek / wyczyść kolejkę
     support:
-      title: Support Author
-      server: Report Bugs / Ideas - Support Server
-      patreon: Become a Patreon
-      coffee: Buy Me a Coffee
-      to_do: To-Do
+      title: Wsparcie dla Autora
+      server: Zgłoś Błędy / Pomysły - Serwer Wsparcia
+      patreon: Zostań Patronem
+      coffee: Kup mi kawę
+      to_do: Do zrobienia
       help_code:
-        - name: Help with Code
-        - issues: If you have any issues, please report to
-      source_code: Source Code
+        - name: Pomoc z kodem
+        - issues: Jeśli masz jakieś problemy, proszę zgłosić
+      source_code: Kod źródłowy
 - messages:
-    missing_permission: Missing permission for send messages
-    user_not_connected: User not joined to voice channel
-    user_not_playing: User not playing song
-    user_not_song_skip: User no song to skip
-    work: Work with
-    love_music: Love music
+    missing_permission: Brak uprawnień do wysyłania wiadomości
+    user_not_connected: Użytkownik nie jest połączony z kanałem głosowym
+    user_not_playing: Użytkownik nie odtwarza piosenki
+    user_not_song_skip: Użytkownik nie ma piosenki do pominięcia
+    work: Praca z
+    love_music: Kochaniem muzyki
     play:
-      - searching: Searching for
-      - playing: Playing
-      - playing_from: Playing from
-      - duration: Duration
-      - publish_date: Publish Date
-      - unknown: Unavailable
-      - unsupported: Sorry, This type video/live not supported
-      - method_no_available: Sorry, playing from this method not available at this time
-      - change_prefix: If you playing outside youtube, remove `_` from your query
+      - searching: Szukanie
+      - playing: Odtwarzanie
+      - playing_from: Odtwarzanie z
+      - duration: Czas trwania
+      - publish_date: Data publikacji
+      - unknown: Niedostępne
+      - unsupported: Przepraszam, ten typ wideo/transmisji na żywo nie jest obsługiwany
+      - method_no_available: Przepraszam, ta metoda odtwarzania nie jest obecnie dostępna
+      - change_prefix: Jeśli odtwarzasz z zewnętrznego źródła niż YouTube, usuń znak `_` z zapytania
     pause:
-      - paused: Playing / Queue paused
+      - paused: Odtwarzanie / Kolejka wstrzymana
     resume:
-      - resumed: Playing / Queue resumed
-      - not_have_song: User not have song to play
+      - resumed: Odtwarzanie / Kolejka wznowiona
+      - not_have_song: Użytkownik nie ma piosenki do odtworzenia
     skip:
-      - skipped: Skipped Song
+      - skipped: Pominięto piosenkę
     stop:
-      - stopped: Stopped playing queue
+      - stopped: Zatrzymano odtwarzanie kolejki
     seek:
-      - seeked: Rewinded song
-      - longer_duration: User entered a duration longer than the track
-      - no_song: User no song to seek
+      - seeked: Przewinięto piosenkę
+      - longer_duration: Użytkownik podał długość dłuższą niż trwający utwór
+      - no_song: Użytkownik nie ma piosenki do przewinięcia
     queue:
-      - title: Queue List / Next Songs
-      - track: Track
-      - added: Added to Queue
-      - empty: Queue Empty, no added next songs to play
+      - title: Lista Kolejki / Następne Piosenki
+      - track: Piosenka
+      - added: Dodano do kolejki
+      - empty: Kolejka jest pusta, brak dodanych następnych utworów do odtworzenia
     progress:
-      - wait: Waiting for player start
+      - wait: Oczekiwanie na rozpoczęcie odtwarzania
     volume:
-      - level: The current volume set is
-      - set: Changed volume to
-      - max_level: User set too high volume level. Max volume is 200%
+      - level: Obecnie ustawiony poziom głośności to
+      - set: Zmieniono poziom głośności na
+      - max_level: Użytkownik ustawił zbyt wysoki poziom głośności. Maksymalny poziom głośności wynosi 200%
