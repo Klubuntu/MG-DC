@@ -69,6 +69,7 @@
       - paused: Playing / Queue paused
     resume:
       - resumed: Playing / Queue resumed
+      - not_have_song: User not have song to play
     skip:
       - skipped: Skipped Song
     stop:
@@ -82,6 +83,8 @@
       - track: Track
       - added: Added to Queue
       - empty: Queue Empty, no added next songs to play
+    progress:
+      - wait: Waiting for player start
     volume:
       - level: The current volume set is
       - set: Changed volume to
