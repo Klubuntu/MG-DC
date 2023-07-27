@@ -4,11 +4,12 @@ const {getEmoji} = require("../helpers/utils");
 const {useEmbed} = require("../helpers/embeds");
 
 async function play(interaction) {
+  const config = interaction.locale_config
   const player = interaction.player;
   await player.extractors.loadDefault();
   const channel = interaction.member.voice.channel;
   if (!channel) {
-    msg_user_not_voicechannel = "❌ User not joined to voice channel";
+    msg_user_not_voicechannel = "❌ " + config.messages[1].user_not_connected;
     console.log(msg_user_not_voicechannel);
     interaction.reply(msg_user_not_voicechannel);
     userJoined = false;
@@ -21,7 +22,7 @@ async function play(interaction) {
     };
     query = interaction.options.getString("query");
     await interaction.reply(
-      `${getEmoji("search")} **Searching for**: <${query}>`
+      `${getEmoji("search")} **${config.messages.play[0].searching}**: <${query}>`
     );
     const searchService = interaction.options?._hoistedOptions[1]?.value;
     if (searchService && searchService.length > 0) {
@@ -37,7 +38,7 @@ async function play(interaction) {
       track_duration = res._data.tracks[0].duration;
     }
     catch{
-      interaction.channel.send(":x: Sorry, playing from this method not available at this time\n> If you playing outside youtube, remove `_` from your query `" + query + "`")
+      interaction.channel.send(`:x: ${config.messages.play[7].method_no_available}\n> ${config.messages.play[8].change_prefix}` + "`" + query + "`")
       return;
     }
     const voiceChannel = interaction.guild.members.cache.get(
@@ -52,7 +53,7 @@ async function play(interaction) {
     }
     catch(e){
       console.error(e);
-      console.log("[BOT] Sorry, This type video/live not supported")
+      console.log(`[BOT] ${config.messages.play[6].unsupported}`)
       interaction.followUp({embeds: [useEmbed(res._data.tracks[0], "error")]})
     }
   }
