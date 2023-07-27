@@ -3,6 +3,7 @@ const {getEmoji, getEmbed, getSeconds} = require("../helpers/utils");
 const {convert} = require("discord-emoji-convert")
 
 async function queue(interaction){
+   const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
       try{
@@ -10,12 +11,12 @@ async function queue(interaction){
          tracks_raw = tracks[0].raw
          queueEmbedData = {
             color: 0x8a40de,
-            title: `${getEmoji("music")} Queue List / Next Songs`
+            title: `${getEmoji("music")} ${config.messages.queue[0].title}`
          }
          let queue_list = []
          num = 1
          for (const track of tracks){
-            console.log("Track >", track.raw.title, `: ${track.url}`)
+            console.log(`${config.messages.queue[1].track} >`, track.raw.title, `: ${track.url}`)
             queue_list.push({ name: `${convert(num.toString())} Track: ${track.raw.title}`, value: track.url})
             num += 1
          }
@@ -25,21 +26,22 @@ async function queue(interaction){
        }
        catch{
          console.error("[DEBUG] Empty Queue")
-         interaction.reply(":x: Queue Empty, no added next songs to play")
+         interaction.reply(`:x: ${config.messages.queue[1].track}`)
        }
    }
    else{
-      interaction.reply(":x: Queue Empty, no added songs to play")
+      interaction.reply(`:x: ${config.messages.queue[3].empty}`)
    }
 }
 
 async function seek(interaction, seconds=0){
+   const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
       console.log("[DEBUG] Seek - Queue exists")
       seekEmbedData = {
          color: 0x8a40de,
-         title: `${getEmoji("skip")} Rewinded song`
+         title: `${getEmoji("skip")} ${config.messages.seek[0].seeked}`
       }
       if(seconds <= 0){
          skip_time = interaction.options.getInteger("seconds") * 1000;
@@ -49,7 +51,7 @@ async function seek(interaction, seconds=0){
       }
       const currentTrackDuration = getQueue.currentTrack.durationMS | 0;
       if (skip_time > currentTrackDuration - 1000) {
-         opts_seek.title = ":x: User entered a duration longer than the track";
+         opts_seek.title = `:x: ${config.messages.seek[1].longer_duration}`;
          seekEmbed = getEmbed(seekEmbedData)
          interaction.reply({embeds: [seekEmbed]})
       }
@@ -59,39 +61,41 @@ async function seek(interaction, seconds=0){
          await getQueue.node.seek(skip_time)
       }
    }else{
-      interaction.reply(":cd: User no song to skip")
+      interaction.reply(`:cd: ${config.messages.seek[2].no_song}`)
    }
 }
 
 async function skip(interaction){
+   const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
       console.log("[DEBUG] Skip - Queue exists")
       skipEmbedData = {
          color: 0xde703a,
-         title: `${getEmoji("skip")} Skipped Song`
+         title: `${getEmoji("skip")} ${config.messages.skip[0].skipped}`
       }
       skipEmbed = getEmbed(skipEmbedData)
       interaction.reply({embeds: [skipEmbedData]})
       getQueue.node.skip()
    }else{
-      interaction.reply(":cd: User not playing songs")
+      interaction.reply(`:cd: ${config.messages.user_not_playing}`)
    }
 }
 
 async function stop(interaction){
+   const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
       console.log("[DEBUG] Stop - Queue exists")
       stopEmbedData = {
          color: 0xd62424,
-         title: `${getEmoji("stop")} Stopped playing queue`
+         title: `${getEmoji("stop")} ${config.messages.stop[0].stopped}`
       }
       stopEmbed = getEmbed(stopEmbedData)
       interaction.reply({embeds: [stopEmbed]})
       getQueue.node.stop(true)
    }else{
-      interaction.reply(":cd: User not playing song")
+      interaction.reply(`:cd: ${config.messages.user_not_playing}`)
    }
 }
 
