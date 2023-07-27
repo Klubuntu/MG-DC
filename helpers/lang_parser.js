@@ -13,7 +13,7 @@ async function getLanguage(usrLang) {
       const data = await readFileAsync(langPath, 'utf8');
       const parsed = YAML.parse(data);
       const config = parsed[0]
-      config.messages = parsed[1]
+      config.messages = parsed[1].messages
       return config;
    } catch (error) {
       console.error('[ERROR] Unable to read or parse language file:', error.message);
