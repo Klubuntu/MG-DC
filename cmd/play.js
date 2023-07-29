@@ -3,6 +3,7 @@ const {useMainPlayer} = require("discord-player");
 require("@discord-player/extractor");
 const {getEmoji} = require("../helpers/utils");
 const {useEmbed} = require("../helpers/embeds");
+// const {playEvent} = require("../helpers/actions");
 
 async function play(interaction) {
   const config = interaction.locale_config
@@ -51,28 +52,14 @@ async function play(interaction) {
           metadata: interaction,
         },
       });
+      interaction.track = res._data.tracks[0]
+      interaction.playEvent(interaction)
     }
     catch(e){
       console.error(e);
       console.log(`[BOT] ${config.messages.play[6].unsupported}`)
       interaction.followUp({embeds: [useEmbed(res._data.tracks[0], "error")]})
     }
-  }
-}
-
-const fetch = require('node-fetch');
-
-// Function to fetch the M3U URL and extract the audio URL
-async function getAudioUrlFromM3U(m3uUrl) {
-  try {
-    const response = await fetch(m3uUrl);
-    const m3uData = await response.text();
-    // Assuming the audio URL is the first line of the M3U file
-    const audioUrl = m3uData.split('\n')[0].trim();
-    return audioUrl;
-  } catch (error) {
-    console.error('Error fetching M3U URL:', error);
-    return null;
   }
 }
 

@@ -1,8 +1,6 @@
 const {getEmoji, getEmbed} = require("./utils");
-const setUserLanguage = require('./lang_parser')
 function useEmbed(track, name) {
-   console.log(track.player.client)
-   const config = setUserLanguage.embeds("en");
+   const config = track.config
    trackSource = track.raw.source || track.__metadata.source
    trackSourceFormatted = trackSource.charAt(0).toUpperCase() + trackSource.slice(1)
    playEmbedData = {
