@@ -39,7 +39,6 @@ function useEmbed(track, name) {
       embedName.thumb = track.thumbnail
    }
    tmpNewEmbed = getEmbed(embedName)
-   console.log(tmpNewEmbed.data.fields)
    return tmpNewEmbed
 }
 

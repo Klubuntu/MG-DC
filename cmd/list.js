@@ -4,7 +4,7 @@ const stateFunctions = require('./state')
 const queueFunctions = require('./queue');
 const helpFunctions = require('./help');
 const { logAction } = require('../helpers/utils');
-const {playEvent} = require('../helpers/actions');
+const {playEvent,trackAddEvent} = require('../helpers/actions');
 const setUserLanguage = require('../helpers/lang_parser')
 
 function setupCommands(client) {
@@ -12,7 +12,10 @@ function setupCommands(client) {
       const userLocale = interaction?.locale || 'en';
       console.log(userLocale)
       interaction.locale_config = await setUserLanguage(userLocale);
+      /* Define Events */
       interaction.playEvent = playEvent;
+      interaction.trackAddEvent = trackAddEvent;
+      /* ------------- */
       if(interaction.isButton()) {
          btnID = interaction.customId
          if(btnID == "btn_playback"){

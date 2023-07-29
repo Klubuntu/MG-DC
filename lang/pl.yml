@@ -51,8 +51,8 @@
 - messages:
     missing_permission: Brak uprawnień do wysyłania wiadomości
     user_not_connected: Użytkownik nie jest połączony z kanałem głosowym
-    user_not_playing: Użytkownik nie odtwarza piosenki
-    user_not_song_skip: Użytkownik nie ma piosenki do pominięcia
+    user_not_playing: Użytkownik nie odtwarza żadnej piosenki
+    user_not_song_skip: Użytkownik nie ma żadnej piosenki do pominięcia
     work: Praca z
     love_music: Miłością do muzyki
     play:
@@ -69,7 +69,7 @@
       - paused: Odtwarzanie / Kolejka wstrzymana
     resume:
       - resumed: Odtwarzanie / Kolejka wznowiona
-      - not_have_song: Użytkownik nie ma piosenki do odtworzenia
+      - not_have_song: Użytkownik nie ma piosenki do odtwarzania
     skip:
       - skipped: Pominięto piosenkę
     stop:
@@ -79,8 +79,8 @@
       - longer_duration: Użytkownik podał długość dłuższą niż trwający utwór
       - no_song: Użytkownik nie ma piosenki do przewinięcia
     queue:
-      - title: Lista Kolejki / Następne Piosenki
-      - track: Piosenka
+      - title: Lista Kolejki / Następne Utwory
+      - track: Utwór
       - added: Dodano do kolejki
       - empty: Kolejka jest pusta, brak dodanych następnych utworów do odtworzenia
     progress:

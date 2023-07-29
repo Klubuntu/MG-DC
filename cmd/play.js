@@ -1,9 +1,9 @@
-const { createAudioResource, createAudioPlayer, joinVoiceChannel } = require('@discordjs/voice');
-const {useMainPlayer} = require("discord-player");
+const {createAudioResource, createAudioPlayer, joinVoiceChannel} = require('@discordjs/voice');
+const {useQueue, useMainPlayer} = require("discord-player");
 require("@discord-player/extractor");
 const {getEmoji} = require("../helpers/utils");
 const {useEmbed} = require("../helpers/embeds");
-// const {playEvent} = require("../helpers/actions");
+const useLegacy = require("./queue");
 
 async function play(interaction) {
   const config = interaction.locale_config
@@ -52,8 +52,16 @@ async function play(interaction) {
           metadata: interaction,
         },
       });
-      interaction.track = res._data.tracks[0]
-      interaction.playEvent(interaction)
+      interaction.track = res._data.tracks[0];
+      getQueue = useQueue(interaction.guild.id);
+      if(getQueue){
+        if(getQueue.size > 0){
+          interaction.trackAddEvent(interaction);
+        }
+        else{
+          interaction.playEvent(interaction);
+        }
+      }
     }
     catch(e){
       console.error(e);
@@ -63,23 +71,27 @@ async function play(interaction) {
   }
 }
 
-async function playURL(interaction){
+function playURL(interaction){
   let url = interaction.options.getString("url");
+  const player = interaction.legacyPlayer
   const connection = joinVoiceChannel({
     channelId: interaction.member.voice.channel.id,
     guildId: interaction.member.voice.channel.guild.id,
     adapterCreator: interaction.member.voice.channel.guild.voiceAdapterCreator,
   });
-  const player = createAudioPlayer();
+  
   player.play(createAudioResource(url), { type: 'unknown' });
   connection.subscribe(player);
+  interaction.legacyPlayer.test = player
   interaction.reply('Now playing audio!');
   
 }
 
 function runtime(interaction) {
   const player = useMainPlayer();
+  const legacy_player = createAudioPlayer();
   interaction.player = player;
+  interaction.legacyPlayer = legacy_player;
   if (interaction.commandName === "play") {
     play(interaction);
   }

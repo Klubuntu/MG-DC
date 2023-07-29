@@ -1,6 +1,7 @@
 const {useQueue} = require("discord-player");
 const {getEmoji, getEmbed, getSeconds} = require("../helpers/utils");
 const {convert} = require("discord-emoji-convert")
+const {getVoiceConnection} = require('@discordjs/voice');
 
 async function queue(interaction){
    const config = interaction.locale_config
@@ -17,15 +18,16 @@ async function queue(interaction){
          num = 1
          for (const track of tracks){
             console.log(`${config.messages.queue[1].track} >`, track.raw.title, `: ${track.url}`)
-            queue_list.push({ name: `${convert(num.toString())} Track: ${track.raw.title}`, value: track.url})
+            queue_list.push({ name: `${convert(num.toString())} ${config.messages.queue[1].track}: ${track.raw.title}`, value: track.url})
             num += 1
          }
-         opts_queue.fields = queue_list
-         listQueue = getEmbed(seekEmbedData, interaction.locale)
+         queueEmbedData.fields = queue_list
+         listQueue = getEmbed(queueEmbedData, interaction.locale)
          interaction.reply({embeds: [listQueue]}) 
        }
-       catch{
-         console.error("[DEBUG] Empty Queue")
+       catch(e){
+         console.error("[DEBUG] Empty Queue | or External Error")
+         console.error(e)
          interaction.reply(`:x: ${config.messages.queue[1].track}`)
        }
    }
@@ -51,7 +53,7 @@ async function seek(interaction, seconds=0){
       }
       const currentTrackDuration = getQueue.currentTrack.durationMS | 0;
       if (skip_time > currentTrackDuration - 1000) {
-         opts_seek.title = `:x: ${config.messages.seek[1].longer_duration}`;
+         seekEmbedData.title = `:x: ${config.messages.seek[1].longer_duration}`;
          seekEmbed = getEmbed(seekEmbedData, interaction.locale)
          interaction.reply({embeds: [seekEmbed]})
       }
@@ -85,17 +87,25 @@ async function skip(interaction){
 async function stop(interaction){
    const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
+   stopEmbedData = {
+      color: 0xd62424,
+      title: `${getEmoji("stop")} ${config.messages.stop[0].stopped}`
+   }
+   stopEmbed = getEmbed(stopEmbedData)
    if(getQueue){
       console.log("[DEBUG] Stop - Queue exists")
-      stopEmbedData = {
-         color: 0xd62424,
-         title: `${getEmoji("stop")} ${config.messages.stop[0].stopped}`
-      }
-      stopEmbed = getEmbed(stopEmbedData, interaction.locale)
       interaction.reply({embeds: [stopEmbed]})
       getQueue.node.stop(true)
-   }else{
-      interaction.reply(`:cd: ${config.messages.user_not_playing}`)
+   }
+   else{
+      try{
+         const connection = getVoiceConnection(interaction.guild.id);
+         connection.destroy();
+         interaction.reply({embeds: [stopEmbed]})
+      }
+      catch{
+         interaction.reply(`:cd: ${config.messages.user_not_playing}`)
+      }
    }
 }
 

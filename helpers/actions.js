@@ -2,17 +2,19 @@ const { useEmbed } = require("./embeds");
 
 function playEvent(i){
    track = i.track;
-   track.config = i.locale_config
+   track.config = i.locale_config;
    console.log("[BOT] Playing", track.url);
    i.channel.send({embeds: [ useEmbed(track, "play")]});
 }
 
+function trackAddEvent(i){
+   track = i.track;
+   track.config = i.locale_config;
+   console.log("[BOT] Added to play", track.url);
+   i.channel.send({ embeds: [useEmbed(track, "add")] }).catch(console.error);
+}
+
 // function setupEvents(player){
-//    player.events.on('playerTrigger', (queue, track) => {
-//       console.log("[BOT] Playing", track.url);
-//       queue.metadata.channel.send("test");
-//       queue.metadata.channel.send({embeds: [ useEmbed(track, "play")]});
-//    });
 //    player.events.on('audioTrackAdd', (queue, track) => {
 //       if (!playCounts.has(track.url)) {
 //          playCounts.set(track.url, 1);
@@ -49,4 +51,7 @@ function playEvent(i){
 //    });
 // }
 
-module.exports = {playEvent: playEvent}
+module.exports = { 
+   playEvent: playEvent, 
+   trackAddEvent: trackAddEvent 
+};
