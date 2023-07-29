@@ -1,3 +1,4 @@
+const { createAudioResource, createAudioPlayer, joinVoiceChannel } = require('@discordjs/voice');
 const {useMainPlayer} = require("discord-player");
 require("@discord-player/extractor");
 const {getEmoji} = require("../helpers/utils");
@@ -9,7 +10,7 @@ async function play(interaction) {
   await player.extractors.loadDefault();
   const channel = interaction.member.voice.channel;
   if (!channel) {
-    msg_user_not_voicechannel = "❌ " + config.messages[1].user_not_connected;
+    msg_user_not_voicechannel = "❌ " + config.messages.user_not_connected;
     console.log(msg_user_not_voicechannel);
     interaction.reply(msg_user_not_voicechannel);
     userJoined = false;
@@ -76,10 +77,17 @@ async function getAudioUrlFromM3U(m3uUrl) {
 }
 
 async function playURL(interaction){
-  const player = interaction.player;
-  const channel = interaction.member.voice.channel;
   let url = interaction.options.getString("url");
-  console.log("[DEBUG]", url)
+  const connection = joinVoiceChannel({
+    channelId: interaction.member.voice.channel.id,
+    guildId: interaction.member.voice.channel.guild.id,
+    adapterCreator: interaction.member.voice.channel.guild.voiceAdapterCreator,
+  });
+  const player = createAudioPlayer();
+  player.play(createAudioResource(url), { type: 'unknown' });
+  connection.subscribe(player);
+  interaction.reply('Now playing audio!');
+  
 }
 
 function runtime(interaction) {

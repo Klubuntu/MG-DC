@@ -5,7 +5,8 @@ let sentMessages = new Set();
 function setupEvents(player){
    player.events.on('playerTrigger', (queue, track) => {
       console.log("[BOT] Playing", track.url);
-      // queue.metadata.channel.send({embeds: [useEmbed(track, "play")]});
+      queue.metadata.channel.send("test");
+      queue.metadata.channel.send({embeds: [ useEmbed(track, "play")]});
    });
    player.events.on('audioTrackAdd', (queue, track) => {
       if (!playCounts.has(track.url)) {

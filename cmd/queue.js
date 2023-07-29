@@ -21,7 +21,7 @@ async function queue(interaction){
             num += 1
          }
          opts_queue.fields = queue_list
-         listQueue = getEmbed(seekEmbedData)
+         listQueue = getEmbed(seekEmbedData, interaction.locale)
          interaction.reply({embeds: [listQueue]}) 
        }
        catch{
@@ -52,11 +52,11 @@ async function seek(interaction, seconds=0){
       const currentTrackDuration = getQueue.currentTrack.durationMS | 0;
       if (skip_time > currentTrackDuration - 1000) {
          opts_seek.title = `:x: ${config.messages.seek[1].longer_duration}`;
-         seekEmbed = getEmbed(seekEmbedData)
+         seekEmbed = getEmbed(seekEmbedData, interaction.locale)
          interaction.reply({embeds: [seekEmbed]})
       }
       else{
-         seekEmbed = getEmbed(seekEmbedData)
+         seekEmbed = getEmbed(seekEmbedData, interaction.locale)
          interaction.reply({embeds: [seekEmbed]})
          await getQueue.node.seek(skip_time)
       }
@@ -74,7 +74,7 @@ async function skip(interaction){
          color: 0xde703a,
          title: `${getEmoji("skip")} ${config.messages.skip[0].skipped}`
       }
-      skipEmbed = getEmbed(skipEmbedData)
+      skipEmbed = getEmbed(skipEmbedData, interaction.locale)
       interaction.reply({embeds: [skipEmbedData]})
       getQueue.node.skip()
    }else{
@@ -91,7 +91,7 @@ async function stop(interaction){
          color: 0xd62424,
          title: `${getEmoji("stop")} ${config.messages.stop[0].stopped}`
       }
-      stopEmbed = getEmbed(stopEmbedData)
+      stopEmbed = getEmbed(stopEmbedData, interaction.locale)
       interaction.reply({embeds: [stopEmbed]})
       getQueue.node.stop(true)
    }else{
