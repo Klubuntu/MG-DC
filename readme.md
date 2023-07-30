@@ -18,11 +18,9 @@
             alt="chat on Discord">
        </a>
 </p>
-<a href="https://manager-discord.netlify.app" target="_blank">
-    <img alt="Version" src="https://github.com/Klubuntu/MG-DC/assets/49614906/7605e832-cb99-45c6-a33e-da4cb06740ab" onclick="javascript:window.open('https://manager-discord.netlify.app')" width="256">
-</a>
 
 
+[✨ Add Bot to Your Server](https://manager-discord.netlify.app)
 
 ## Requirements
 - Get a Discord Bot Token [[Tutorial](https://www.writebots.com/discord-bot-token/)]
