@@ -1,0 +1,94 @@
+- help:
+    desc: Polecenia Bota
+    info:
+      title: Pomoc dotycząca Managera DC
+      playback:
+        - value: Wyświetl dostępne polecenia odtwarzania
+      queue:
+        - value: Wyświetl dostępne polecenia kolejki
+      support:
+        - value: Wsparcie dla Projektu / Serwer Pomocy
+      info:
+        - value: Wyświetl tę wiadomość
+      buttons:
+        - name: Możesz kliknąć dowolny przycisk, aby zobaczyć kolejne polecenia
+        - value: Kolorowe przyciski poniżej
+        - playback: Odtwarzanie
+        - queue: Kolejka
+        - support: Wsparcie
+    playback:
+      title: Polecenia odtwarzania
+      play:
+        - value: Odtwórz piosenkę
+      play_online:
+        - value: Odtwórz stream M3U z adresu URL
+      progress:
+        - value: Wyświetl postęp odtwarzania bieżącej piosenki
+      pause:
+        - value: Wstrzymaj bieżącą piosenkę
+      resume:
+        - value: Wznów zatrzymaną piosenkę
+    queue:
+      title: Polecenia kolejki
+      queue:
+        - value: Wyświetl utwory w kolejce
+      skip:
+        - value: Pominięcie następnej piosenki w kolejce
+      seek:
+        - value: Przewijanie piosenki o określoną liczbę sekund
+      moveto:
+        - value: Przewijanie piosenki o określoną liczbę godzin/minut/sekund
+      stop:
+        - value: Zatrzymaj odtwarzanie piosenek / wyczyść kolejkę
+    support:
+      title: Wsparcie Autora
+      server: Zgłoś Błędy / Pomysły - Serwer Wsparcia
+      patreon: Zostań Patronem
+      coffee: Kup mi kawę
+      to_do: Do zrobienia
+      help_code:
+        - name: Pomoc z kodem
+        - issues: Jeśli masz jakieś problemy, proszę zgłosić
+      source_code: Kod źródłowy
+      other_projects: Inne Projekty
+- messages:
+    missing_permission: Brak uprawnień do wysyłania wiadomości
+    user_not_connected: Użytkownik nie jest połączony z kanałem głosowym
+    user_not_playing: Użytkownik nie odtwarza żadnej piosenki
+    user_not_song_skip: Użytkownik nie ma żadnej piosenki do pominięcia
+    work: Praca z
+    love_music: Miłością do muzyki
+    play:
+      - searching: Szukanie
+      - playing: Odtwarzanie
+      - playing_from: Odtwarzanie z
+      - duration: Czas trwania
+      - publish_date: Data publikacji
+      - unknown: Niedostępna
+      - unsupported: Przepraszam, ten typ wideo/transmisji na żywo nie jest obsługiwany
+      - method_no_available: Przepraszam, ta metoda odtwarzania nie jest obecnie dostępna. Może być to błąd tymczasowy, zbróbuj za chwilę ponownie
+      - change_prefix: Jeśli odtwarzasz z zewnętrznego źródła niż YouTube, usuń znak `_` z zapytania
+    pause:
+      - paused: Odtwarzanie / Kolejka wstrzymana
+    resume:
+      - resumed: Odtwarzanie / Kolejka wznowiona
+      - not_have_song: Użytkownik nie ma piosenki do odtwarzania
+    skip:
+      - skipped: Pominięto piosenkę
+    stop:
+      - stopped: Zatrzymano odtwarzanie kolejki
+    seek:
+      - seeked: Przewinięto piosenkę
+      - longer_duration: Użytkownik podał długość dłuższą niż trwający utwór
+      - no_song: Użytkownik nie ma piosenki do przewinięcia
+    queue:
+      - title: Lista Kolejki / Następne Utwory
+      - track: Utwór
+      - added: Dodano do kolejki
+      - empty: Kolejka jest pusta, brak dodanych następnych utworów do odtworzenia
+    progress:
+      - wait: Oczekiwanie na rozpoczęcie odtwarzania
+    volume:
+      - level: Obecnie ustawiony poziom głośności to
+      - set: Zmieniono poziom głośności na
+      - max_level: Użytkownik ustawił zbyt wysoki poziom głośności. Maksymalny poziom głośności wynosi 200%
