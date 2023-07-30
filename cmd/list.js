@@ -8,6 +8,8 @@ const { logAction } = require('../helpers/utils');
 
 function setupCommands(client) {
    client.on("interactionCreate", async (interaction) => {
+      const userLocale = interaction?.locale || 'en';
+      interaction.locale_config = await setUserLanguage(userLocale) || await setUserLanguage('en');
       if(interaction.isButton()) {
          btnID = interaction.customId
          if(btnID == "btn_playback"){
