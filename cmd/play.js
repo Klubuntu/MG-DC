@@ -3,11 +3,12 @@ require("@discord-player/extractor");
 const {getEmoji, getEmbed} = require("../helpers/utils");
 
 async function play(interaction) {
+  const config = interaction.locale_config
   const player = interaction.player;
   await player.extractors.loadDefault();
   const channel = interaction.member.voice.channel;
   if (!channel) {
-    msg_user_not_voicechannel = "❌ User not joined to voice channel";
+    msg_user_not_voicechannel = "❌ " + config.messages.user_not_connected;
     console.log(msg_user_not_voicechannel);
     interaction.reply(msg_user_not_voicechannel);
     userJoined = false;
@@ -20,7 +21,7 @@ async function play(interaction) {
     };
     query = interaction.options.getString("query");
     await interaction.reply(
-      `${getEmoji("search")} **Searching for**: <${query}>`
+      `${getEmoji("search")} **${config.messages.play[0].searching}**: <${query}>`
     );
     const searchService = interaction.options?._hoistedOptions[1]?.value;
     if (searchService && searchService.length > 0) {
@@ -38,7 +39,7 @@ async function play(interaction) {
       track_duration = res._data.tracks[0].duration;
     }
     catch{
-      interaction.channel.send(":x: Sorry, playing from this method not available at this time\n> If you playing outside youtube, remove `_` from your query `" + query + "`")
+      interaction.channel.send(`:x: ${config.messages.play[7].method_no_available}\n> ${config.messages.play[8].change_prefix}` + "`" + query + "`")
       return '';
     }
     if(track_duration == "0:00"){
@@ -54,15 +55,15 @@ async function play(interaction) {
     console.log("[BOT] Playing", track_url);
     opt_playMsg = {
       color: 0x26d9a0,
-      title: `${getEmoji("music")} Playing ${track_name}`,
+      title: `${getEmoji("music")} ${config.messages.play[1].playing} ${track_name}`,
       url: track_url,
       desc: "by Manager :cd: https://manager-discord.netlify.app",
       img: thumbnail_url,
       fields: [
-        {name: "Playing from", value: ":headphones: "+ track_source, inline: true},
+        {name: config.messages.play[2].playing_from, value: ":headphones: "+ track_source, inline: true},
         // { name: "Channel", value: `<#${voiceChannel}>`, inline: true },
-        { name: "Duration", value: track_duration, inline: true },
-        { name: "Publish Date", value: track_publishDate, inline: true },
+        { name: config.messages.play[3].duration, value: track_duration, inline: true },
+        { name: config.messages.play[4].publish_date, value: track_publishDate || config.messages.play[5].unknown, inline: true },
       ],
     };
     if(res._data.queryType != "youtube"){
@@ -73,7 +74,7 @@ async function play(interaction) {
       playMsg = getEmbed(opt_playMsg);
       await interaction.channel.send({ embeds: [playMsg] });
     } catch (e) {
-      console.error("[BOT] Missing permission for send messages");
+      console.error(`[BOT] ${config.messages.missing_permission}`);
     }
     try{
       await player.play(channel, track_url, {
@@ -83,10 +84,10 @@ async function play(interaction) {
       });
     }
     catch{
-      console.log("[BOT] Sorry, This type video/live not supported")
+      console.log(`[BOT] ${config.messages.play[6].unsupported}`)
       opt_playMsg.img = null;
       opt_playMsg.fields = null;
-      opt_playMsg.desc =  ":x: Sorry, This type video/live not supported"
+      opt_playMsg.desc =  `:x: ${config.messages.play[6].unsupported}`
       exceptMsg = getEmbed(opt_playMsg);
       interaction.followUp({embeds: [exceptMsg]})
     }
