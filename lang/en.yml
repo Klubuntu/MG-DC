@@ -21,7 +21,7 @@
       play:
         - value: Play song
       play_online:
-        - value: Play stream from URL address
+        - value: Play M3U stream from URL address
       progress:
         - value: Display progress playing current song
       pause:

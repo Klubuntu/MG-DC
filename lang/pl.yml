@@ -17,11 +17,11 @@
         - queue: Kolejka
         - support: Wsparcie
     playback:
-      title: Komendy odtwarzania
+      title: Polecenia odtwarzania
       play:
         - value: Odtwórz piosenkę
       play_online:
-        - value: Odtwórz stream z adresu URL
+        - value: Odtwórz stream M3U z adresu URL
       progress:
         - value: Wyświetl postęp odtwarzania bieżącej piosenki
       pause:
@@ -29,7 +29,7 @@
       resume:
         - value: Wznów zatrzymaną piosenkę
     queue:
-      title: Komendy kolejki
+      title: Polecenia kolejki
       queue:
         - value: Wyświetl utwory w kolejce
       skip:

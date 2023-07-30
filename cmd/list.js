@@ -11,7 +11,7 @@ function setupCommands(client) {
    client.on("interactionCreate", async (interaction) => {
       const userLocale = interaction?.locale || 'en';
       console.log(userLocale)
-      interaction.locale_config = await setUserLanguage(userLocale);
+      interaction.locale_config = await setUserLanguage(userLocale) || await setUserLanguage('en');
       /* Define Events */
       interaction.playEvent = playEvent;
       interaction.skipEvent = skipEvent;
