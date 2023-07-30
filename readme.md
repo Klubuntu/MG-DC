@@ -36,6 +36,12 @@ Have Fun 🙂
 ```sh
 npm start
 ```
+## 📒 To-Do
+- ~Enable support for more media services (be like: Spotify, Soundcloud etc.)~
+- Add Support for other languages with autodetect [Progress]
+- You can contribute other language: [Invite](https://crowdin.com/project/manager-dc/invite?h=1e3baaea992fb742e0294df44710eeec1783165)
+- More 4FUN - DJ commands
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/klubuntu/MG-DC/issues).
