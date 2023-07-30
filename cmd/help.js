@@ -46,7 +46,7 @@ async function help(interaction, action=""){
          { name: `${getEmoji('dc')} ${config.help.support.server}`, value: 'https://discord.gg/meKqTdUDDm'},
          { name: `${getEmoji('redbox')} ${config.help.support.patreon}`, value: 'https://patreon.com/klubuntu'},
          { name: `${getEmoji('coffe')} ${config.help.support.coffee}`, value: 'https://www.buymeacoffee.com/klubuntu'},
-         { name: `${getEmoji('tasks')} ${config.help.support.to_do}`, value: 'Add actions to player\nSupport other languages (Starting from: :flag_pl: PL, :flag_de: DE, :flag_fr: FR, :flag_jp: JP)\n If Detect playlist, add all songs to queue'},
+         { name: `${getEmoji('tasks')} ${config.help.support.to_do}`, value: 'Add actions to player\nSupport other languages (Starting from: :flag_pl: PL, :flag_de: DE, :flag_fr: FR, :flag_jp: JP)\n If Detect playlist, add all songs to queue, more commands to manage queue'},
          { name: `:bulb: ${config.help.support.help_code[0].name}`, value: `${config.help.support.help_code[1].issues}\nhttps://github.com/Klubuntu/MG-DC/issues`},
          { name: `${getEmoji('pc')} ${config.help.support.source_code}`, value: 'https://github.com/klubuntu/MG-DC'},
          { name: `:books: ${config.help.support.other_projects}`, value: ':deciduous_tree: Radio Garden: https://github.com/klubuntu/radio-garden-dc'}

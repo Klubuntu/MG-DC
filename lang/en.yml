@@ -66,7 +66,7 @@
       - publish_date: Publish Date
       - unknown: Unavailable
       - unsupported: Sorry, This type video/live not supported
-      - method_no_available: Sorry, playing from this method not available at this time
+      - method_no_available: Sorry, playing from this method not available at this time. This may be a temporary error, try again in a while
       - change_prefix: If you playing outside youtube, remove `_` from your query
     pause:
       - paused: Playing / Queue paused

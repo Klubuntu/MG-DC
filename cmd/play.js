@@ -9,6 +9,16 @@ async function play(interaction) {
   const player = interaction.player;
   await player.extractors.loadDefault();
   const channel = interaction.member.voice.channel;
+
+  function removeQueryFromURL(url) {
+    var urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+    var questionMarkIndex = url.indexOf("?");
+    if (questionMarkIndex !== -1 && url.match(urlPattern)) {
+      return url.split("?")[0];
+    }
+    return url;
+  }
+
   if (!channel) {
     msg_user_not_voicechannel = "❌ " + config.messages.user_not_connected;
     console.log(msg_user_not_voicechannel);
@@ -21,7 +31,7 @@ async function play(interaction) {
     options = {
       volume: 100,
     };
-    query = interaction.options.getString("query");
+    query = removeQueryFromURL(interaction.options.getString("query"));
     await interaction.reply(
       `${getEmoji("search")} **${config.messages.play[0].searching}**: <${query}>`
     );
@@ -38,7 +48,8 @@ async function play(interaction) {
       track_url = res._data.tracks[0].url;
       track_duration = res._data.tracks[0].duration;
     }
-    catch{
+    catch(e){
+      console.error("[DEBUG MESSAGE FOR DEV ONLY - REPORT TO AUTHOR]: ", e);
       interaction.channel.send(`:x: ${config.messages.play[7].method_no_available}\n> ${config.messages.play[8].change_prefix}` + "`" + query + "`")
       return;
     }
