@@ -2,7 +2,7 @@
 <h1 align="center">🎵MG-DC (Discord bot for music) </h1>
 <p>
 <a href="" target="_blank">
-	<img alt="Version" src="https://img.shields.io/badge/version-3.0.0%20BETA%201-orange">
+	<img alt="Version" src="https://img.shields.io/badge/version-3.0.0%20BETA%202-orange">
 </a>
   <a href="https://github.com/klubuntu/MG-DC/#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -18,6 +18,9 @@
             alt="chat on Discord">
        </a>
 </p>
+
+
+[✨ Add Bot to Your Server](https://manager-discord.netlify.app)
 
 ## Requirements
 - Get a Discord Bot Token [[Tutorial](https://www.writebots.com/discord-bot-token/)]
@@ -36,6 +39,12 @@ Have Fun 🙂
 ```sh
 npm start
 ```
+## 📒 To-Do
+- ~Enable support for more media services (be like: Spotify, Soundcloud etc.)~
+- Add Support for other languages with autodetect [Progress]
+- You can contribute other language: [Invite](https://crowdin.com/project/manager-dc/invite?h=1e3baaea992fb742e0294df44710eeec1783165)
+- More 4FUN - DJ commands
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/klubuntu/MG-DC/issues).
