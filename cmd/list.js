@@ -3,6 +3,7 @@ const playFunctions = require('./play')
 const stateFunctions = require('./state')
 const queueFunctions = require('./queue');
 const helpFunctions = require('./help');
+const setUserLanguage = require('../helpers/lang_parser')
 const { logAction } = require('../helpers/utils');
 
 function setupCommands(client) {
