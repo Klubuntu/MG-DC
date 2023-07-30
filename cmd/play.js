@@ -3,7 +3,6 @@ const {useQueue, useMainPlayer} = require("discord-player");
 require("@discord-player/extractor");
 const {getEmoji} = require("../helpers/utils");
 const {useEmbed} = require("../helpers/embeds");
-const useLegacy = require("./queue");
 
 async function play(interaction) {
   const config = interaction.locale_config
@@ -72,7 +71,7 @@ async function play(interaction) {
 }
 
 function playURL(interaction){
-  let url = interaction.options.getString("url");
+  const config = interaction.locale_config
   const player = interaction.legacyPlayer
   const connection = joinVoiceChannel({
     channelId: interaction.member.voice.channel.id,
@@ -80,11 +79,23 @@ function playURL(interaction){
     adapterCreator: interaction.member.voice.channel.guild.voiceAdapterCreator,
   });
   
+  let url = interaction.options.getString("url");
   player.play(createAudioResource(url), { type: 'unknown' });
   connection.subscribe(player);
   interaction.legacyPlayer.test = player
-  interaction.reply('Now playing audio!');
-  
+  interaction.track = {
+    raw: {},
+    __metadata: {
+      source: "stream URL",
+      uploadedAt: ""
+    },
+    title: "Stream URL",
+    duration: `${getEmoji("rec")} LIVE`,
+    url: "https://manager-discord.netlify.app",
+    thumbnail: "",
+  }
+  interaction.reply(`${config.messages.play[1].playing} <${url}>`);
+  interaction.playEvent(interaction);
 }
 
 function runtime(interaction) {

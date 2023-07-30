@@ -19,7 +19,9 @@
     playback:
       title: Playback commands
       play:
-        - value: View playback commands
+        - value: Play song
+      play_online:
+        - value: Play stream from URL address
       progress:
         - value: Display progress playing current song
       pause:
@@ -48,6 +50,7 @@
         - name: Help with Code
         - issues: If you have any issues, please report to
       source_code: Source Code
+      other_projects: Other Projects
 - messages:
     missing_permission: Missing permission for send messages
     user_not_connected: User not joined to voice channel

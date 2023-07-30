@@ -4,7 +4,7 @@ const stateFunctions = require('./state')
 const queueFunctions = require('./queue');
 const helpFunctions = require('./help');
 const { logAction } = require('../helpers/utils');
-const {playEvent,trackAddEvent} = require('../helpers/actions');
+const {playEvent, skipEvent, pauseEvent, resumeEvent, seekEvent, trackAddEvent, stopEvent} = require('../helpers/actions');
 const setUserLanguage = require('../helpers/lang_parser')
 
 function setupCommands(client) {
@@ -14,7 +14,12 @@ function setupCommands(client) {
       interaction.locale_config = await setUserLanguage(userLocale);
       /* Define Events */
       interaction.playEvent = playEvent;
+      interaction.skipEvent = skipEvent;
+      interaction.pauseEvent = pauseEvent;
+      interaction.resumeEvent = resumeEvent;
+      interaction.seekEvent = seekEvent;
       interaction.trackAddEvent = trackAddEvent;
+      interaction.stopEvent = stopEvent;
       /* ------------- */
       if(interaction.isButton()) {
          btnID = interaction.customId

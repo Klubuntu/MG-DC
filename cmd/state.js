@@ -7,20 +7,20 @@ async function progress(interaction){
    if(getQueue){
       progress_queue = getQueue.node.createProgressBar()
       console.log("[DEBUG] Progress - Queue exists")
-      opts_prog = {
+      progressEmbedData = {
          color: 0xeda915,
          title: `${getEmoji("setup")} ${config.messages.progress[0].wait}`,
          url: "https://youtube.com",
          desc: progress_queue
        }
       try{
-         opts_prog.title = getQueue.history.currentTrack.title
-         opts_prog.url = getQueue.history.currentTrack.url
-         prog = getEmbed(opts_prog, interaction.locale)
+         progressEmbedData.title = getQueue.history.currentTrack.title
+         progressEmbedData.url = getQueue.history.currentTrack.url
+         prog = getEmbed(progressEmbedData)
          interaction.reply({embeds: [prog]})
       }
       catch{
-         prog = getEmbed(opts_prog, interaction.locale)
+         prog = getEmbed(progressEmbedData)
          interaction.reply({embeds: [prog]})
       }
 
@@ -34,14 +34,9 @@ async function pause(interaction) {
    const config = interaction.locale_config
    getQueue = useQueue(interaction.guild.id)
    if(getQueue){
-    console.log("[DEBUG] Pause - Queue exists")
-    opts_pause = {
-      color: 0xeda915,
-      title: `${getEmoji("pause")} ${config.messages.pause[0].paused}`
-    }
-    pause = getEmbed(opts_pause, interaction.locale)
-    interaction.reply({embeds: [pause]})
-    await getQueue.node.pause()
+      interaction.track = getQueue.currentTrack
+      interaction.pauseEvent(interaction)
+      await getQueue.node.pause()
    }else{
       interaction.reply(`:cd: ${config.messages.user_not_playing}`)
    }
@@ -51,14 +46,9 @@ async function resume(interaction) {
    const config = interaction.locale_config
    getQueue = useQueue(interaction.guild.id)
    if(getQueue){
-    console.log("[DEBUG] Resume - Queue exists")
-    opts_resume = {
-      color: 0x4d8ceb,
-      title: `${getEmoji("play")} ${config.messages.resume[0].resumed}`
-    }
-    resume = getEmbed(opts_resume, interaction.locale)
-    interaction.reply({embeds: [resume]})
-    await getQueue.node.resume()
+      interaction.track = getQueue.currentTrack
+      interaction.resumeEvent(interaction)
+      await getQueue.node.resume()
    }else{
       interaction.reply(`:cd: ${config.messages.resume[1].not_have_song}`)
    }

@@ -19,7 +19,9 @@
     playback:
       title: Komendy odtwarzania
       play:
-        - value: Wyświetl dostępne polecenia odtwarzania
+        - value: Odtwórz piosenkę
+      play_online:
+        - value: Odtwórz stream z adresu URL
       progress:
         - value: Wyświetl postęp odtwarzania bieżącej piosenki
       pause:
@@ -39,7 +41,7 @@
       stop:
         - value: Zatrzymaj odtwarzanie piosenek / wyczyść kolejkę
     support:
-      title: Wsparcie dla Autora
+      title: Wsparcie Autora
       server: Zgłoś Błędy / Pomysły - Serwer Wsparcia
       patreon: Zostań Patronem
       coffee: Kup mi kawę
@@ -48,6 +50,7 @@
         - name: Pomoc z kodem
         - issues: Jeśli masz jakieś problemy, proszę zgłosić
       source_code: Kod źródłowy
+      other_projects: Inne Projekty
 - messages:
     missing_permission: Brak uprawnień do wysyłania wiadomości
     user_not_connected: Użytkownik nie jest połączony z kanałem głosowym
@@ -61,7 +64,7 @@
       - playing_from: Odtwarzanie z
       - duration: Czas trwania
       - publish_date: Data publikacji
-      - unknown: Niedostępne
+      - unknown: Niedostępna
       - unsupported: Przepraszam, ten typ wideo/transmisji na żywo nie jest obsługiwany
       - method_no_available: Przepraszam, ta metoda odtwarzania nie jest obecnie dostępna
       - change_prefix: Jeśli odtwarzasz z zewnętrznego źródła niż YouTube, usuń znak `_` z zapytania

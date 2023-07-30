@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node --no-warnings bot.js",
     "public": "node --no-warnings bot-public.js",
+    "dev-maps": "node --enable-source-maps",
     "dm": "node dm.js",
     "test": "Test not exists"
   },

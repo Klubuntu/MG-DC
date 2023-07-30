@@ -40,11 +40,6 @@ async function seek(interaction, seconds=0){
    const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
-      console.log("[DEBUG] Seek - Queue exists")
-      seekEmbedData = {
-         color: 0x8a40de,
-         title: `${getEmoji("skip")} ${config.messages.seek[0].seeked}`
-      }
       if(seconds <= 0){
          skip_time = interaction.options.getInteger("seconds") * 1000;
       }
@@ -52,15 +47,14 @@ async function seek(interaction, seconds=0){
          skip_time = seconds * 1000
       }
       const currentTrackDuration = getQueue.currentTrack.durationMS | 0;
-      if (skip_time > currentTrackDuration - 1000) {
-         seekEmbedData.title = `:x: ${config.messages.seek[1].longer_duration}`;
-         seekEmbed = getEmbed(seekEmbedData, interaction.locale)
-         interaction.reply({embeds: [seekEmbed]})
+      interaction.track = getQueue.currentTrack
+      interaction.other = {
+         skip_time: skip_time,
+         currentTrackDuration: currentTrackDuration
       }
-      else{
-         seekEmbed = getEmbed(seekEmbedData, interaction.locale)
-         interaction.reply({embeds: [seekEmbed]})
-         await getQueue.node.seek(skip_time)
+      interaction.seekEvent(interaction)
+      if (skip_time < currentTrackDuration - 1000) {
+         await getQueue.node.seek(skip_time);
       }
    }else{
       interaction.reply(`:cd: ${config.messages.seek[2].no_song}`)
@@ -71,13 +65,8 @@ async function skip(interaction){
    const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
-      console.log("[DEBUG] Skip - Queue exists")
-      skipEmbedData = {
-         color: 0xde703a,
-         title: `${getEmoji("skip")} ${config.messages.skip[0].skipped}`
-      }
-      skipEmbed = getEmbed(skipEmbedData, interaction.locale)
-      interaction.reply({embeds: [skipEmbedData]})
+      interaction.track = getQueue.currentTrack
+      interaction.skipEvent(interaction)
       getQueue.node.skip()
    }else{
       interaction.reply(`:cd: ${config.messages.user_not_playing}`)
@@ -87,23 +76,31 @@ async function skip(interaction){
 async function stop(interaction){
    const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
-   stopEmbedData = {
-      color: 0xd62424,
-      title: `${getEmoji("stop")} ${config.messages.stop[0].stopped}`
-   }
-   stopEmbed = getEmbed(stopEmbedData)
    if(getQueue){
+      interaction.track = getQueue.currentTrack
       console.log("[DEBUG] Stop - Queue exists")
-      interaction.reply({embeds: [stopEmbed]})
+      interaction.stopEvent(interaction)
       getQueue.node.stop(true)
    }
    else{
       try{
+         interaction.track = {
+            raw: {},
+            __metadata: {
+               source: "tt",
+               uploadedAt: ""
+            },
+            title: "stream URL",
+            duration: "LIVE",
+            url: "https://manager-discord.netlify.app",
+            thumbnail: "",
+         }
          const connection = getVoiceConnection(interaction.guild.id);
          connection.destroy();
-         interaction.reply({embeds: [stopEmbed]})
+         interaction.stopEvent(interaction)
       }
-      catch{
+      catch(e){
+         console.log(e)
          interaction.reply(`:cd: ${config.messages.user_not_playing}`)
       }
    }

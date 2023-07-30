@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { EmbedBuilder } = require('discord.js');
-const version = "v3.0 BETA 2"
+const version = "v3.0 PUBLIC"
 
 function getEmbed(opt){
    const embed = new EmbedBuilder()
@@ -35,6 +35,8 @@ function getEmoji(emojiname){
 			return ':fast_forward:';
 		case 'stop':
 			return ':stop_button:';
+		case 'rec':
+			return ':record_button:';
 		case 'book':
 			return ':bookmark:';
 		case 'setup':

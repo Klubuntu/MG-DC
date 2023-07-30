@@ -21,6 +21,7 @@ async function help(interaction, action=""){
       desc: config.help.desc,
       fields: [
          { name: '/play', value: config.help.playback.play[0].value},
+         { name: '/play-online', value: config.help.playback.play_online[0].value},
          { name: '/progress', value: config.help.playback.progress[0].value},
          { name: '/pause', value: config.help.playback.pause[0].value},
          { name: '/resume', value: config.help.playback.resume[0].value}
@@ -47,7 +48,8 @@ async function help(interaction, action=""){
          { name: `${getEmoji('coffe')} ${config.help.support.coffee}`, value: 'https://www.buymeacoffee.com/klubuntu'},
          { name: `${getEmoji('tasks')} ${config.help.support.to_do}`, value: 'Add actions to player\nSupport other languages (Starting from: :flag_pl: PL, :flag_de: DE, :flag_fr: FR, :flag_jp: JP)'},
          { name: `:bulb: ${config.help.support.help_code[0].name}`, value: `${config.help.support.help_code[1].issues}\nhttps://github.com/Klubuntu/MG-DC/issues`},
-         { name: `${getEmoji('pc')} ${config.help.support.source_code}`, value: 'https://github.com/klubuntu/MG-DC'}
+         { name: `${getEmoji('pc')} ${config.help.support.source_code}`, value: 'https://github.com/klubuntu/MG-DC'},
+         { name: `:books: ${config.help.support.other_projects}`, value: ':deciduous_tree: Radio Garden: https://github.com/klubuntu/radio-garden-dc'}
       ]
    }
    getHelp = getEmbed(opts_help)
