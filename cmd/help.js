@@ -24,7 +24,8 @@ async function help(interaction, action=""){
          { name: '/play-online', value: config.help.playback.play_online[0].value},
          { name: '/progress', value: config.help.playback.progress[0].value},
          { name: '/pause', value: config.help.playback.pause[0].value},
-         { name: '/resume', value: config.help.playback.resume[0].value}
+         { name: '/resume', value: config.help.playback.resume[0].value},
+         { name: '/volume', value: config.help.playback.volume[0].value}
       ]
    }
    opts_help_queue = {
