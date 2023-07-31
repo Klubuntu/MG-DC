@@ -22,15 +22,15 @@
 
 [✨ Add Bot to Your Server](https://manager-discord.netlify.app)
 
-## Requirements
-- Get a Discord Bot Token [[Tutorial](https://www.writebots.com/discord-bot-token/)]
-- Get a Bot Client ID [[Tutorial](https://support.heateor.com/discord-client-id-discord-client-secret/)]
-- Edit config.js & replace `[YOUR_TOKEN], [YOUR_CLIENTID]` to your values
-
 ## Languages
 - Currently Manager supports: 🇬🇧 English, 🇵🇱 Polish, 🇩🇪 German, 🇫🇷 France, 🇯🇵 Japanese
 - Language automatically detected based on Discord language
 - You can contribute other language or upgrade your: [On this link](https://crowdin.com/project/manager-dc/invite?h=1e3baaea992fb742e0294df44710eeec1783165)
+
+## Requirements
+- Get a Discord Bot Token [[Tutorial](https://www.writebots.com/discord-bot-token/)]
+- Get a Bot Client ID [[Tutorial](https://support.heateor.com/discord-client-id-discord-client-secret/)]
+- Edit config.js & replace `[YOUR_TOKEN], [YOUR_CLIENTID]` to your values
 
 ## Install
 ```sh
