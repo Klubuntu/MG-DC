@@ -36,12 +36,9 @@ async function queue(interaction){
 }
 
 async function seek(interaction, seconds=0){
+   const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
-      seekEmbedData = {
-         color: 0x8a40de,
-         title: `${getEmoji("skip")} ${config.messages.stop[0].seeked}`
-      }
       if(seconds <= 0){
          skip_time = interaction.options.getInteger("seconds") * 1000;
       }
@@ -49,15 +46,14 @@ async function seek(interaction, seconds=0){
          skip_time = seconds * 1000
       }
       const currentTrackDuration = getQueue.currentTrack.durationMS | 0;
-      if (skip_time > currentTrackDuration - 1000) {
-         seekEmbedData.title = `:x: ${config.messages.seek[1].longer_duration}`;
-         seekEmbed = getEmbed(seekEmbedData)
-         interaction.reply({embeds: [seekEmbed]})
+      interaction.track = getQueue.currentTrack
+      interaction.other = {
+         skip_time: skip_time,
+         currentTrackDuration: currentTrackDuration
       }
-      else{
-         seekEmbed = getEmbed(seekEmbedData)
-         interaction.reply({embeds: [seekEmbed]})
-         await getQueue.node.seek(skip_time)
+      interaction.seekEvent(interaction)
+      if (skip_time < currentTrackDuration - 1000) {
+         await getQueue.node.seek(skip_time);
       }
    }else{
       interaction.reply(`:cd: ${config.messages.seek[2].no_song}`)
@@ -65,30 +61,25 @@ async function seek(interaction, seconds=0){
 }
 
 async function skip(interaction){
+   const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
-      skipEmbedData = {
-         color: 0xde703a,
-         title: `${getEmoji("skip")} ${config.messages.skip[0].skipped}`
-      }
-      skipEmbed = getEmbed(skipEmbedData)
-      interaction.reply({embeds: [skipEmbed]})
-      await getQueue.node.skip()
+      interaction.track = getQueue.currentTrack
+      interaction.skipEvent(interaction)
+      getQueue.node.skip()
    }else{
       interaction.reply(`:cd: ${config.messages.user_not_playing}`)
    }
 }
 
 async function stop(interaction){
+   const config = interaction.locale_config
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
-      stopEmbedData = {
-         color: 0xd62424,
-         title: `${getEmoji("stop")} ${config.messages.stop[0].stopped}`
-      }
-      stopEmbed = getEmbed(stopEmbedData)
-      interaction.reply({embeds: [stopEmbed]})
-      await getQueue.node.stop(true)
+      interaction.track = getQueue.currentTrack
+      console.log("[DEBUG] Stop - Queue exists")
+      interaction.stopEvent(interaction)
+      getQueue.node.stop(true)
    }else{
       interaction.reply(`:cd: ${config.messages.user_not_playing}`)
    }
