@@ -105,7 +105,7 @@ module.exports = {
       },
       {
          name: "play-online",
-         description: "Play M3U/RTMP content from url",
+         description: "Play MP3/OTHER content from url",
          options: [
             {
                name: 'url',
