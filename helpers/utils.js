@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { EmbedBuilder } = require('discord.js');
-const version = "v3.0 BETA 2"
+const version = "v3.0"
 
 function getEmbed(opt){
    const embed = new EmbedBuilder()
