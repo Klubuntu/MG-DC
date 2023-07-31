@@ -28,6 +28,8 @@
         - value: Wstrzymaj bieżącą piosenkę
       resume:
         - value: Wznów zatrzymaną piosenkę
+      volume:
+        - value: Sprawdź lub zmień poziom głośności
     queue:
       title: Polecenia kolejki
       queue:

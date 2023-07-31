@@ -1,5 +1,3 @@
-// PlayerEvents.js
-
 const { useEmbed } = require("./embeds");
 
 class PlayerEvents {
@@ -50,7 +48,7 @@ class PlayerEvents {
       const track = i.track;
       track.config = i.locale_config;
       console.log("[BOT] Stopped Playing");
-      i.reply({ embeds: [useEmbed(track, "")] });
+      i.reply({ embeds: [useEmbed(track, "stop")] });
    }
 }
 

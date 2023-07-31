@@ -28,6 +28,8 @@
         - value: Pause current song
       resume:
         - value: Resume paused song
+      volume:
+        - value: Check or change volume level
     queue:
       title: Queue commands
       queue:

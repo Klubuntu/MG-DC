@@ -10,7 +10,6 @@ const setUserLanguage = require('../helpers/lang_parser')
 function setupCommands(client) {
    client.on("interactionCreate", async (interaction) => {
       const userLocale = interaction?.locale || 'en';
-      console.log(userLocale)
       interaction.locale_config = await setUserLanguage(userLocale) || await setUserLanguage('en');
       /* Define Events */
       interaction.playEvent = playEvent;

@@ -22,7 +22,7 @@ async function queue(interaction){
             num += 1
          }
          queueEmbedData.fields = queue_list
-         listQueue = getEmbed(queueEmbedData, interaction.locale)
+         listQueue = getEmbed(queueEmbedData)
          interaction.reply({embeds: [listQueue]}) 
        }
        catch(e){
