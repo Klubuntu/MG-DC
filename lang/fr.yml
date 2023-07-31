@@ -1,0 +1,145 @@
+- 
+  help:
+    desc: Commandes du bot
+    info:
+      title: Aide sur le manager DC
+      playback:
+        - 
+          value: Voir les commandes de lecture
+      queue:
+        - 
+          value: Voir les commandes de file d'attente
+      support:
+        - 
+          value: Projet de support / Serveur d'aide
+      info:
+        - 
+          value: Voir ce message
+      buttons:
+        - 
+          name: Vous pouvez cliquer sur n'importe quel bouton pour voir les commandes suivantes
+        - 
+          value: Boutons colorés ci-dessous
+        - 
+          playback: Lecture
+        - 
+          queue: File d'attente
+        - 
+          support: Soutien
+    playback:
+      title: Commandes de lecture
+      play:
+        - 
+          value: Jouer la chanson
+      play_online:
+        - 
+          value: Jouer le flux M3U depuis l'adresse URL
+      progress:
+        - 
+          value: Afficher la progression de la lecture de la musique actuelle
+      pause:
+        - 
+          value: Mettre en pause la chanson en cours
+      resume:
+        - 
+          value: Reprendre la chanson en pause
+      volume:
+        - 
+          value: Contrôler ou modifier le niveau de volume
+    queue:
+      title: Commandes en file d'attente
+      queue:
+        - 
+          value: Afficher les chansons dans la file d'attente
+      skip:
+        - 
+          value: Passer la chanson suivante dans la file d'attente
+      seek:
+        - 
+          value: Transférer la chanson en utilisant des secondes
+      moveto:
+        - 
+          value: Transférer la chanson en utilisant des heures/minutes/secondes
+      stop:
+        - 
+          value: Arrêter la lecture des musiques / effacer la file d'attente
+    support:
+      title: Auteur du support
+      server: Signaler des bugs / Idées - Serveur de support
+      patreon: Devenir un patron
+      coffee: Achetez-moi un café
+      to_do: À faire
+      help_code:
+        - 
+          name: Aide avec Code
+        - 
+          issues: Si vous avez des problèmes, veuillez le signaler à
+      source_code: Code source
+      other_projects: Autres projets
+- 
+  messages:
+    missing_permission: Autorisation manquante pour l'envoi de messages
+    user_not_connected: L'utilisateur n'a pas rejoint le salon vocal
+    user_not_playing: L'utilisateur ne joue pas la chanson
+    user_not_song_skip: L'utilisateur n'a pas de chanson à passer
+    work: Travailler avec
+    love_music: Aimez la musique
+    play:
+      - 
+        searching: Recherche en cours
+      - 
+        playing: En cours de lecture
+      - 
+        playing_from: Lecture depuis
+      - 
+        duration: Durée
+      - 
+        publish_date: Date de publication
+      - 
+        unknown: Unavailable
+      - 
+        unsupported: Désolé, ce type de vidéo/live n'est pas pris en charge
+      - 
+        method_no_available: Désolé, la lecture à partir de cette méthode n'est pas disponible pour le moment. Cela peut être une erreur temporaire, réessayez dans un certain temps
+      - 
+        change_prefix: Si vous jouez en dehors de youtube, retirez `_` de votre requête
+    pause:
+      - 
+        paused: Lecture / File d'attente en pause
+    resume:
+      - 
+        resumed: Lecture / File d'attente reprise
+      - 
+        not_have_song: L'utilisateur n'a pas de chanson à jouer
+    skip:
+      - 
+        skipped: Chanson ignorée
+    stop:
+      - 
+        stopped: File d'attente de lecture arrêtée
+    seek:
+      - 
+        seeked: Chanson retournée
+      - 
+        longer_duration: L'utilisateur a saisi une durée plus longue que la piste
+      - 
+        no_song: Utilisateur sans chanson à rechercher
+    queue:
+      - 
+        title: Liste de file d’attente / chansons suivantes
+      - 
+        track: Piste
+      - 
+        added: Ajouté à la file d'attente
+      - 
+        empty: File d’attente vide, pas de chansons suivantes ajoutées à jouer
+    progress:
+      - 
+        wait: En attente du début du joueur
+    volume:
+      - 
+        level: Le volume actuel est de
+      - 
+        set: Volume changé en
+      - 
+        max_level: L'utilisateur a défini un volume trop élevé. Le volume maximal est de 200%

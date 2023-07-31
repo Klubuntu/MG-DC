@@ -1,0 +1,145 @@
+- 
+  help:
+    desc: Bot-Befehle
+    info:
+      title: Hilfe bei Manager DC
+      playback:
+        - 
+          value: Wiedergabebefehle anzeigen
+      queue:
+        - 
+          value: Warteschlangen-Befehle anzeigen
+      support:
+        - 
+          value: Support-Projekt / Hilfe-Server
+      info:
+        - 
+          value: Diese Nachricht ansehen
+      buttons:
+        - 
+          name: Sie können auf einen beliebigen Button klicken, um die nächsten Befehle zu sehen
+        - 
+          value: Bunte Tasten unten
+        - 
+          playback: Wiedergabe
+        - 
+          queue: Warteschlange
+        - 
+          support: Unterstützung
+    playback:
+      title: Wiedergabebefehle
+      play:
+        - 
+          value: Titel abspielen
+      play_online:
+        - 
+          value: M3U-Stream von URL-Adresse abspielen
+      progress:
+        - 
+          value: Zeige Fortschritt beim Abspielen des aktuellen Liedes
+      pause:
+        - 
+          value: Aktuellen Titel pausieren
+      resume:
+        - 
+          value: Anhaltendes Lied fortsetzen
+      volume:
+        - 
+          value: Lautstärkepegel überprüfen oder ändern
+    queue:
+      title: Warteschlangen-Befehle
+      queue:
+        - 
+          value: Titel in der Warteschlange anzeigen
+      skip:
+        - 
+          value: Nächsten Titel in der Warteschlange überspringen
+      seek:
+        - 
+          value: Lied mit Sekunden weiterleiten
+      moveto:
+        - 
+          value: Lied mit Stunden/Minuten/Sekunden weiterleiten
+      stop:
+        - 
+          value: Wiedergabe stoppen / Warteschlange leeren
+    support:
+      title: Unterstütze Autor
+      server: Bugs melden / Ideen - Support-Server
+      patreon: Werde ein Patreon
+      coffee: Kaufe mir einen Kaffee
+      to_do: To-Do
+      help_code:
+        - 
+          name: Hilfe mit Code
+        - 
+          issues: Wenn Sie irgendwelche Probleme haben, melden Sie bitte an
+      source_code: Quellcode
+      other_projects: Andere Projekte
+- 
+  messages:
+    missing_permission: Keine Berechtigung zum Senden von Nachrichten
+    user_not_connected: Benutzer nicht dem Sprachkanal beigetreten
+    user_not_playing: Benutzer spielt kein Lied
+    user_not_song_skip: Benutzer kein Lied zu überspringen
+    work: Arbeiten mit
+    love_music: Liebesmusik
+    play:
+      - 
+        searching: Suche nach
+      - 
+        playing: Abspielen
+      - 
+        playing_from: Abspielen von
+      - 
+        duration: Dauer
+      - 
+        publish_date: Veröffentlichungsdatum
+      - 
+        unknown: Unavailable
+      - 
+        unsupported: Entschuldigung, Video/Live wird nicht unterstützt
+      - 
+        method_no_available: Entschuldigung, die Wiedergabe dieser Methode ist derzeit nicht verfügbar. Dies kann ein temporärer Fehler sein, versuchen Sie es in einer Weile erneut
+      - 
+        change_prefix: Wenn du außerhalb von youtube spielst, entferne `_` aus deiner Abfrage
+    pause:
+      - 
+        paused: Abspielen / Warteschlange pausiert
+    resume:
+      - 
+        resumed: Wiedergabe / Warteschlange fortgesetzt
+      - 
+        not_have_song: Benutzer hat keinen Titel zum Abspielen
+    skip:
+      - 
+        skipped: Song übersprungen
+    stop:
+      - 
+        stopped: Warteschlange gestoppt
+    seek:
+      - 
+        seeked: Wiedergewonnenes Lied
+      - 
+        longer_duration: Benutzer hat eine Dauer eingegeben, die länger als der Track ist
+      - 
+        no_song: Benutzer kein Lied zu suchen
+    queue:
+      - 
+        title: Warteschlange / Nächste Titel
+      - 
+        track: Spur
+      - 
+        added: Zur Warteschlange hinzugefügt
+      - 
+        empty: Warteschlange leer, keine hinzugefügten Titel zum Abspielen
+    progress:
+      - 
+        wait: Warte auf Spielerstart
+    volume:
+      - 
+        level: Das aktuelle Volume-Set ist
+      - 
+        set: Lautstärke geändert auf
+      - 
+        max_level: Benutzer zu hohes Lautstärke-Level gesetzt. Maximale Lautstärke ist 200%

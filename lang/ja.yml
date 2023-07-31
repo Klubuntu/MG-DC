@@ -1,0 +1,145 @@
+- 
+  help:
+    desc: Botコマンド
+    info:
+      title: 管理者 DC のヘルプ
+      playback:
+        - 
+          value: 再生コマンドを表示
+      queue:
+        - 
+          value: キューコマンドの表示
+      support:
+        - 
+          value: サポートプロジェクト / ヘルプサーバー
+      info:
+        - 
+          value: このメッセージを表示
+      buttons:
+        - 
+          name: 次のコマンドを表示するには、任意のボタンをクリックしてください
+        - 
+          value: 下のカラフルなボタン
+        - 
+          playback: 再生
+        - 
+          queue: キュー
+        - 
+          support: サポート
+    playback:
+      title: 再生コマンド
+      play:
+        - 
+          value: 曲を再生
+      play_online:
+        - 
+          value: URLアドレスからM3Uストリームを再生
+      progress:
+        - 
+          value: 現在の曲を再生中の進行状況を表示する
+      pause:
+        - 
+          value: 現在の曲を一時停止
+      resume:
+        - 
+          value: 一時停止中の曲を再開
+      volume:
+        - 
+          value: 音量レベルを確認または変更する
+    queue:
+      title: キューコマンド
+      queue:
+        - 
+          value: キューに曲を表示する
+      skip:
+        - 
+          value: キューで次の曲をスキップ
+      seek:
+        - 
+          value: 曲を秒で転送
+      moveto:
+        - 
+          value: 曲を時間/分/秒で転送
+      stop:
+        - 
+          value: 再生曲を停止/キューをクリア
+    support:
+      title: 投稿者をサポート
+      server: バグ/アイデア - サポートサーバー
+      patreon: Patreonになる
+      coffee: 私にコーヒーを買う
+      to_do: To-Do
+      help_code:
+        - 
+          name: コードのヘルプ
+        - 
+          issues: 問題がある場合は、次の宛先に報告してください：
+      source_code: ソースコード：
+      other_projects: その他のプロジェクト
+- 
+  messages:
+    missing_permission: メッセージを送信する権限がありません
+    user_not_connected: ボイスチャンネルに参加していないユーザー
+    user_not_playing: ユーザーが曲を再生していません
+    user_not_song_skip: ユーザーがスキップする曲がありません
+    work: 協力する
+    love_music: ラブミュージック
+    play:
+      - 
+        searching: 検索中
+      - 
+        playing: 再生中
+      - 
+        playing_from: 再生元
+      - 
+        duration: 期間
+      - 
+        publish_date: 公開日
+      - 
+        unknown: Unavailable
+      - 
+        unsupported: 申し訳ありませんが、このタイプのビデオ/ライブはサポートされていません
+      - 
+        method_no_available: 申し訳ありませんが、現時点ではこのメソッドから再生できません。一時的なエラーが発生する可能性があります。しばらくしてからもう一度お試しください。
+      - 
+        change_prefix: youtube外でプレイしている場合は、クエリから`_`を削除してください
+    pause:
+      - 
+        paused: 再生中/キューは一時停止中
+    resume:
+      - 
+        resumed: 再生中/キューが再開されました
+      - 
+        not_have_song: 再生する曲がありません
+    skip:
+      - 
+        skipped: スキップした曲
+    stop:
+      - 
+        stopped: 再生キューを停止しました
+    seek:
+      - 
+        seeked: 曲が巻き戻されました
+      - 
+        longer_duration: ユーザーはトラックよりも長い時間を入力しました
+      - 
+        no_song: シークするユーザーの曲がありません
+    queue:
+      - 
+        title: キューリスト/次の曲
+      - 
+        track: トラック
+      - 
+        added: キューに追加しました
+      - 
+        empty: キューが空です。次に再生する曲が追加されていません
+    progress:
+      - 
+        wait: プレイヤーの開始を待っています
+    volume:
+      - 
+        level: 現在の音量セットは
+      - 
+        set: '音量を変更:'
+      - 
+        max_level: ユーザーの音量レベルが高すぎます。最大音量は200%です
