@@ -27,6 +27,11 @@
 - Get a Bot Client ID [[Tutorial](https://support.heateor.com/discord-client-id-discord-client-secret/)]
 - Edit config.js & replace `[YOUR_TOKEN], [YOUR_CLIENTID]` to your values
 
+## Languages
+- Currently Manager supports: 🇬🇧 English, 🇵🇱 Polish, 🇩🇪 German, 🇫🇷 France, 🇯🇵 Japanese
+- Language automatically detected based on Discord language
+- You can contribute other language or upgrade your: [On this link](https://crowdin.com/project/manager-dc/invite?h=1e3baaea992fb742e0294df44710eeec1783165)
+
 ## Install
 ```sh
 npm install
@@ -41,8 +46,8 @@ npm start
 ```
 ## 📒 To-Do
 - ~Enable support for more media services (be like: Spotify, Soundcloud etc.)~
-- Add Support for other languages with autodetect [Progress]
-- You can contribute other language: [Invite](https://crowdin.com/project/manager-dc/invite?h=1e3baaea992fb742e0294df44710eeec1783165)
+- ~Add Support for other languages with autodetect~
+- Add more languages [Progress]
 - More 4FUN - DJ commands
 
 ## 🤝 Contributing
