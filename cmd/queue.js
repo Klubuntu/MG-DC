@@ -1,3 +1,4 @@
+const {getVoiceConnection} = require('@discordjs/voice');
 const {useQueue} = require("discord-player");
 const {getEmoji, getEmbed, getSeconds} = require("../helpers/utils");
 const {convert} = require("discord-emoji-convert")
