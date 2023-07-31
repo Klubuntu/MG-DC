@@ -99,9 +99,21 @@ module.exports = {
                      name: "Vimeo",
                      value: "vimeo"
                   }
-               ]
+              ]
             },
          ],
+      },
+      {
+         name: "play-online",
+         description: "Play M3U/RTMP content from url",
+         options: [
+            {
+               name: 'url',
+               description: 'URL',
+               type: 3,
+               required: true,
+            },
+         ]
       },
       {
          name: 'pause',
