@@ -1,3 +1,4 @@
+const {createAudioResource, createAudioPlayer, joinVoiceChannel} = require('@discordjs/voice');
 const {useQueue, useMainPlayer} = require("discord-player");
 require("@discord-player/extractor");
 const {getEmoji} = require("../helpers/utils");
@@ -78,11 +79,45 @@ async function play(interaction) {
     }
   }
 }
+
+function playURL(interaction){
+  const config = interaction.locale_config
+  const player = interaction.legacyPlayer
+  const connection = joinVoiceChannel({
+    channelId: interaction.member.voice.channel.id,
+    guildId: interaction.member.voice.channel.guild.id,
+    adapterCreator: interaction.member.voice.channel.guild.voiceAdapterCreator,
+  });
+  
+  let url = interaction.options.getString("url");
+  player.play(createAudioResource(url), { type: 'unknown' });
+  connection.subscribe(player);
+  interaction.legacyPlayer.test = player
+  interaction.track = {
+    raw: {},
+    __metadata: {
+      source: "stream URL",
+      uploadedAt: ""
+    },
+    title: "Stream URL",
+    duration: `${getEmoji("rec")} LIVE`,
+    url: "https://manager-discord.netlify.app",
+    thumbnail: "",
+  }
+  interaction.reply(`${config.messages.play[1].playing} <${url}>`);
+  interaction.playEvent(interaction);
+}
+
 function runtime(interaction) {
   const player = useMainPlayer();
+  const legacy_player = createAudioPlayer();
   interaction.player = player;
+  interaction.legacyPlayer = legacy_player;
   if (interaction.commandName === "play") {
     play(interaction);
+  }
+  if (interaction.commandName === "play-online"){
+    playURL(interaction);
   }
 }
 

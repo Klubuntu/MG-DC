@@ -77,11 +77,29 @@ async function stop(interaction){
    const getQueue = useQueue(interaction.guild.id);
    if(getQueue){
       interaction.track = getQueue.currentTrack
-      console.log("[DEBUG] Stop - Queue exists")
       interaction.stopEvent(interaction)
       getQueue.node.stop(true)
    }else{
-      interaction.reply(`:cd: ${config.messages.user_not_playing}`)
+      try{
+         interaction.track = {
+            raw: {},
+            __metadata: {
+               source: "tt",
+               uploadedAt: ""
+            },
+            title: "stream URL",
+            duration: "LIVE",
+            url: "https://manager-discord.netlify.app",
+            thumbnail: "",
+         }
+         const connection = getVoiceConnection(interaction.guild.id);
+         connection.destroy();
+         interaction.stopEvent(interaction)
+      }
+      catch(e){
+         console.log(e)
+         interaction.reply(`:cd: ${config.messages.user_not_playing}`)
+      }
    }
 }
 
