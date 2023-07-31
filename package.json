@@ -1,6 +1,6 @@
 {
   "name": "manager-music-dc",
-  "version": "3.0 BETA 2",
+  "version": "3.0",
   "description": "Easy play music on your server",
   "main": "bot.js",
   "scripts": {
@@ -16,6 +16,9 @@
     "discord-player": "^6.6.1",
     "discord.js": "^14.11.0",
     "ffmpeg-static": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "util": "^0.12.5",
+    "yaml": "^2.3.1",
     "ytdl-core": "^4.11.5"
   }
 }
