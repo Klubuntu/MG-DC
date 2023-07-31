@@ -83,8 +83,16 @@ async function play(interaction) {
 function playURL(interaction){
   const config = interaction.locale_config
   const player = interaction.legacyPlayer
+  const channel = interaction.member.voice.channel;
+  if (!channel) {
+    msg_user_not_voicechannel = "❌ " + config.messages.user_not_connected;
+    console.log(msg_user_not_voicechannel);
+    interaction.reply(msg_user_not_voicechannel);
+    userJoined = false;
+    return;
+  }
   const connection = joinVoiceChannel({
-    channelId: interaction.member.voice.channel.id,
+    channelId: channel.id,
     guildId: interaction.member.voice.channel.guild.id,
     adapterCreator: interaction.member.voice.channel.guild.voiceAdapterCreator,
   });
