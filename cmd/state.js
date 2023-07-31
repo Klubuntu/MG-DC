@@ -63,14 +63,14 @@ async function volume(interaction){
    if(getQueue){
       volumeLevel = interaction.options.getInteger("level")
       if(!volumeLevel){
-         interaction.reply(":speaker: The current volume set is: " + getQueue.node.volume)
+         interaction.reply(`:speaker: ${config.messages.volume[0].level}: ${getQueue.node.volume}`)
       }
       else if(volumeLevel <= 200){
          await getQueue.node.setVolume(volumeLevel)
-         interaction.reply(":speaker: Changed volume to " + volumeLevel)
+         interaction.reply(`:speaker: ${config.messages.volume[1].set} ${volumeLevel}`)
       }
       else{
-         interaction.reply(":x: User set undefined volume level")
+         interaction.reply(`:x: ${config.messages.volume[2].max_level}`)
       }
    }
    else{
