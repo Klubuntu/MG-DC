@@ -64,5 +64,5 @@ Give a ⭐️ if you like this project !
 
 ## 📝 License
 
-Copyright © 2023 [Klubuntu](https://github.com/klubuntu).<br />
+Copyright © 2024 [Klubuntu](https://github.com/klubuntu).<br />
 This project is [GPL](https://github.com/klubuntu/MG-DC/blob/main/LICENSE) licensed.
