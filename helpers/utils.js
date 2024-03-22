@@ -1,20 +1,22 @@
 const fs = require('fs');
+const {version} = require('../package.json');
 const { EmbedBuilder } = require('discord.js');
-const version = "v3.0"
 
 function getEmbed(opt){
+   const currentDate = new Date();
+   const year = currentDate.getFullYear();
    const embed = new EmbedBuilder()
 	.setColor(opt.color || 0xFFFFFF)
 	.setTitle(opt.title || "Manager Discord")
 	.setURL(opt.url || "https://manager-discord.netlify.app")
 	.setAuthor(opt.author || null)
-	.setDescription(opt.desc || "Work with ❤️ Love music")
+	.setDescription(opt.desc || "Work with :heart: Love music")
 	.setThumbnail(opt.thumb || null)
 	.addFields(opt.fields || { name: 'by Manager :cd:', value: 'https://manager-discord.netlify.app'})
 	.setImage(opt.img || null)
 	.setTimestamp(opt.timestamp || null)
-	.setFooter(opt.footer || {text: `(C) 2023 - Manager ${version} by Klubuntu`, url: 'https://manager-discord.netlify.app'});
-   return embed
+	.setFooter(opt.footer || {text: `(C) ${year} - Manager v${version} by Klubuntu`, url: 'https://manager-discord.netlify.app'});
+   return embed;
 }
 
 function getEmoji(emojiname){
