@@ -47,7 +47,9 @@
       server: Zgłoś Błędy / Pomysły - Serwer Wsparcia
       patreon: Zostań Patronem
       coffee: Kup mi kawę
-      to_do: Do zrobienia
+      to_do:
+        - name: Do zrobienia
+        - list: Dodać więcej języków i zarządzanie listami odtwarzania
       help_code:
         - name: Pomoc z kodem
         - issues: Jeśli masz jakieś problemy, proszę zgłosić

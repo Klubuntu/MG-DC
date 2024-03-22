@@ -68,7 +68,9 @@
       server: Bugs melden / Ideen - Support-Server
       patreon: Werde ein Patreon
       coffee: Kaufe mir einen Kaffee
-      to_do: To-Do
+      to_do:
+        - name: Zu erledigen
+        - Liste: Weitere Sprachen hinzufügen und Wiedergabelisten verwalten
       help_code:
         - 
           name: Hilfe mit Code

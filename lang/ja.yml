@@ -68,7 +68,9 @@
       server: バグ/アイデア - サポートサーバー
       patreon: Patreonになる
       coffee: 私にコーヒーを買う
-      to_do: To-Do
+      to_do:
+        - name: やること
+        - list: 言語の追加とプレイリストの管理
       help_code:
         - 
           name: コードのヘルプ

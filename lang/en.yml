@@ -47,7 +47,9 @@
       server: Report Bugs / Ideas - Support Server
       patreon: Become a Patreon
       coffee: Buy Me a Coffee
-      to_do: To-Do
+      to_do:
+        - name: To-Do
+        - list: Add more languages and playlist management
       help_code:
         - name: Help with Code
         - issues: If you have any issues, please report to

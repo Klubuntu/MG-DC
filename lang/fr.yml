@@ -68,7 +68,9 @@
       server: Signaler des bugs / Idées - Serveur de support
       patreon: Devenir un patron
       coffee: Achetez-moi un café
-      to_do: À faire
+      to_do:
+        - name : À faire
+        - list : Ajouter des langues et gérer les listes de lecture
       help_code:
         - 
           name: Aide avec Code
