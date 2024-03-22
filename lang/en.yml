@@ -58,6 +58,8 @@
     user_not_connected: User not joined to voice channel
     user_not_playing: User not playing song
     user_not_song_skip: User no song to skip
+    invalid_url: Invalid URL
+    unsupported_url: Unsupported URL (not mp3/ogg stream) or (not m3u/pls playlist)
     work: Work with
     love_music: Love music
     play:

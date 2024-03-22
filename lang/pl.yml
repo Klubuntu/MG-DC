@@ -58,6 +58,8 @@
     user_not_connected: Użytkownik nie jest połączony z kanałem głosowym
     user_not_playing: Użytkownik nie odtwarza żadnej piosenki
     user_not_song_skip: Użytkownik nie ma żadnej piosenki do pominięcia
+    invalid_url: Nieprawidłowy adres URL
+    unsupported_url: Nieobsługiwany adres URL (nie jest plikiem mp3/ogg) lub (nie jest listą odtwarzania m3u/pls)
     work: Praca z
     love_music: Miłością do muzyki
     play:

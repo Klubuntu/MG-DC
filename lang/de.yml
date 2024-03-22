@@ -82,6 +82,8 @@
     user_not_connected: Benutzer nicht dem Sprachkanal beigetreten
     user_not_playing: Benutzer spielt kein Lied
     user_not_song_skip: Benutzer kein Lied zu überspringen
+    invalid_url: Ungültige URL
+    unsupported_url: Nicht unterstützte URL (nicht mp3/ogg stream) oder (nicht m3u/pls playlist)
     work: Arbeiten mit
     love_music: Liebesmusik
     play:

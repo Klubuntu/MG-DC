@@ -82,6 +82,8 @@
     user_not_connected: L'utilisateur n'a pas rejoint le salon vocal
     user_not_playing: L'utilisateur ne joue pas la chanson
     user_not_song_skip: L'utilisateur n'a pas de chanson à passer
+        invalid_url : URL non valide
+    unsupported_url : URL non compatible (pas de flux mp3/ogg) ou (pas de liste de lecture m3u/pls)
     work: Travailler avec
     love_music: Aimez la musique
     play:

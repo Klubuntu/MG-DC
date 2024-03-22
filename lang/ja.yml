@@ -81,7 +81,9 @@
     missing_permission: メッセージを送信する権限がありません
     user_not_connected: ボイスチャンネルに参加していないユーザー
     user_not_playing: ユーザーが曲を再生していません
-    user_not_song_skip: ユーザーがスキップする曲がありません
+    user_not_song_skip: ユーザーがスキップする曲がありません    
+    invalid_url: 無効なURL
+    unsupported_url: サポートされていないURL (mp3/oggストリームではない) または (m3u/plsプレイリストではない)
     work: 協力する
     love_music: ラブミュージック
     play:
