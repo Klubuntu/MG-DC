@@ -50,6 +50,13 @@ class PlayerEvents {
       console.log("[BOT] Stopped Playing");
       i.reply({ embeds: [useEmbed(track, "stop")] });
    }
+   
+   playerError(i){
+      const track = i.track;
+      track.config = i.locale_config;
+      console.log("[BOT] Playing error");
+      i.reply({ embeds: [useEmbed(track, "stop")] });
+   }
 }
 
 module.exports = new PlayerEvents();

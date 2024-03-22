@@ -4,7 +4,7 @@ const stateFunctions = require('./state')
 const queueFunctions = require('./queue');
 const helpFunctions = require('./help');
 const setUserLanguage = require('../helpers/lang_parser')
-const {playEvent, skipEvent, pauseEvent, resumeEvent, seekEvent, trackAddEvent, stopEvent} = require('../helpers/actions');
+const {playEvent, skipEvent, pauseEvent, resumeEvent, seekEvent, trackAddEvent, stopEvent, playerError} = require('../helpers/actions');
 const { logAction } = require('../helpers/utils');
 
 function setupCommands(client) {
@@ -19,6 +19,7 @@ function setupCommands(client) {
       interaction.seekEvent = seekEvent;
       interaction.trackAddEvent = trackAddEvent;
       interaction.stopEvent = stopEvent;
+      interaction.playerError = playerError; 
       /* ------------- */
       if(interaction.isButton()) {
          btnID = interaction.customId
@@ -37,10 +38,13 @@ function setupCommands(client) {
             useLegacyFFmpeg: false,
             ytdlOptions: {
                quality: 'highestaudio',
-               highWaterMark: 1 << 25,
+               filter: "audioonly",
+               highWaterMark: 1 << 30,
+               dlChunkSize: 0,
                requestOptions: {
                   headers: {
                         cookie: process.env.YT_COOKIES || ''
+                        /*cookie: cs, authorization, "x-youtube-identity-token"*/
                   }
                }
             }
