@@ -2,7 +2,7 @@
 <h1 align="center">🎵MG-DC (Discord bot for music) </h1>
 <p>
 <a href="" target="_blank">
-	<img alt="Version" src="https://img.shields.io/badge/version-3.0-orange">
+	<img alt="Version" src="https://img.shields.io/badge/version-3.2-orange">
 </a>
   <a href="https://github.com/klubuntu/MG-DC/#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
