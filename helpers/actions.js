@@ -15,6 +15,14 @@ class PlayerEvents {
       i.channel.send({ embeds: [useEmbed(track, "add")] }).catch(console.error);
    }
 
+   playlistAddEvent(i) {
+      const playlist = i.playlist;
+      playlist.config = i.locale_config;
+      console.log("[BOT] Playlist added to play", playlist.url);
+      i.channel.send({ embeds: [useEmbed(playlist, "playlistAdd")] });
+   }
+
+
    skipEvent(i) {
       const track = i.track;
       track.config = i.locale_config;

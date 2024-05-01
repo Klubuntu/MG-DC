@@ -49,7 +49,7 @@
       coffee: Buy Me a Coffee
       to_do:
         - name: To-Do
-        - list: Add more languages and playlist management
+        - list: Add more languages
       help_code:
         - name: Help with Code
         - issues: If you have any issues, please report to
@@ -74,6 +74,8 @@
       - unsupported: Sorry, This type video/live not supported
       - method_no_available: Sorry, playing from this method not available at this time. This may be a temporary error, try again in a while
       - change_prefix: If you playing outside youtube, remove `_` from your query
+    playlist:
+      - add: Added Playlist to queue
     pause:
       - paused: Playing / Queue paused
     resume:

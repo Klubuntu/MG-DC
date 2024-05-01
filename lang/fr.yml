@@ -70,7 +70,7 @@
       coffee: Achetez-moi un café
       to_do:
         - name : À faire
-        - list : Ajouter des langues et gérer les listes de lecture
+        - list : Ajouter des langues
       help_code:
         - 
           name: Aide avec Code
@@ -107,6 +107,8 @@
         method_no_available: Désolé, la lecture à partir de cette méthode n'est pas disponible pour le moment. Cela peut être une erreur temporaire, réessayez dans un certain temps
       - 
         change_prefix: Si vous jouez en dehors de youtube, retirez `_` de votre requête
+    playlist:
+      - add: Ajout d'une liste de lecture à la file d'attente
     pause:
       - 
         paused: Lecture / File d'attente en pause

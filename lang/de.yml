@@ -70,7 +70,7 @@
       coffee: Kaufe mir einen Kaffee
       to_do:
         - name: Zu erledigen
-        - Liste: Weitere Sprachen hinzufügen und Wiedergabelisten verwalten
+        - Liste: Weitere Sprachen hinzufügen
       help_code:
         - 
           name: Hilfe mit Code
@@ -107,6 +107,8 @@
         method_no_available: Entschuldigung, die Wiedergabe dieser Methode ist derzeit nicht verfügbar. Dies kann ein temporärer Fehler sein, versuchen Sie es in einer Weile erneut
       - 
         change_prefix: Wenn du außerhalb von youtube spielst, entferne `_` aus deiner Abfrage
+    playlist:
+      - add: Playlist zur Warteschlange hinzugefügt
     pause:
       - 
         paused: Abspielen / Warteschlange pausiert

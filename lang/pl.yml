@@ -49,7 +49,7 @@
       coffee: Kup mi kawę
       to_do:
         - name: Do zrobienia
-        - list: Dodać więcej języków i zarządzanie listami odtwarzania
+        - list: Dodać więcej języków
       help_code:
         - name: Pomoc z kodem
         - issues: Jeśli masz jakieś problemy, proszę zgłosić
@@ -74,6 +74,8 @@
       - unsupported: Przepraszam, ten typ wideo/transmisji na żywo nie jest obsługiwany
       - method_no_available: Przepraszam, ta metoda odtwarzania nie jest obecnie dostępna. Może być to błąd tymczasowy, zbróbuj za chwilę ponownie
       - change_prefix: Jeśli odtwarzasz z zewnętrznego źródła niż YouTube, usuń znak `_` z zapytania
+    playlist:
+      - add: Dodano listę odwarzania do kolejki
     pause:
       - paused: Odtwarzanie / Kolejka wstrzymana
     resume:

@@ -4,8 +4,6 @@ const { useQueue, useMainPlayer } = require("discord-player");
 require("@discord-player/extractor");
 const { getEmoji } = require("../helpers/utils");
 const { useEmbed } = require("../helpers/embeds");
-//const fetch = require('node-fetch');
-var http = require('http');
 const { Readable } = require('stream');
 const axios = require('axios');
 const { Parser } = require('m3u8-parser');
@@ -46,38 +44,63 @@ async function play(interaction) {
     } else {
       res = await player.search(query);
     }
-    try {
-      track_url = res._data.tracks[0].url;
-      track_duration = res._data.tracks[0].duration;
-    }
-    catch (e) {
-      console.error("[DEBUG MESSAGE FOR DEV ONLY - REPORT TO AUTHOR]: ", e);
-      interaction.channel.send(`:x: ${config.messages.play[7].method_no_available}\n> ${config.messages.play[8].change_prefix}` + "`" + query + "`")
-    }
-    const voiceChannel = interaction.guild.members.cache.get(
-      interaction.member.user.id
-    ).voice.channelId;
-    try {
-      await player.play(channel, track_url, {
-        nodeOptions: {
-          metadata: interaction,
-        },
-      });
-      interaction.track = res._data.tracks[0];
+    const isPlaylist = res.hasPlaylist()
+    if(isPlaylist){
+      let tracks = res.tracks
       getQueue = useQueue(interaction.guild.id);
-      if (getQueue) {
-        if (getQueue.size > 0) {
-          interaction.trackAddEvent(interaction);
+      let firstTrack = tracks[0]
+      interaction.track = firstTrack
+      interaction.playlist = {
+        url: res.playlist.url
+      }
+      interaction.playlist.raw = {
+        source: firstTrack.raw.source
+      }
+      interaction.playlist.__metadata = {
+        source: firstTrack.__metadata.source
+      }
+      interaction.playEvent(interaction)
+      interaction.playlistAddEvent(interaction)
+      for (const track of tracks){
+        interaction.track = track
+          await player.play(channel, track.url, {
+            nodeOptions: {
+              metadata: interaction,
+            },
+          });
+      }
+    } else{
+        try {
+          track_url = res._data.tracks[0].url;
+          track_duration = res._data.tracks[0].duration;
         }
-        else {
-          interaction.playEvent(interaction);
+        catch (e) {
+          console.error("[DEBUG MESSAGE FOR DEV ONLY - REPORT TO AUTHOR]: ", e);
+          interaction.channel.send(`:x: ${config.messages.play[7].method_no_available}\n> ${config.messages.play[8].change_prefix}` + "`" + query + "`")
+        }
+        try {
+          await player.play(channel, track_url, {
+            nodeOptions: {
+              metadata: interaction,
+            },
+          });
+          interaction.track = res._data.tracks[0];
+          // getQueue = useQueue(interaction.guild.id);
+          if (getQueue) {
+            if (getQueue.size > 0) {
+              interaction.trackAddEvent(interaction);
+            }
+            else {
+              interaction.playEvent(interaction);
+            }
+          }
+        } catch (e) {
+          console.log(`[BOT] ${config.messages.play[6].unsupported}`)
+          interaction.followUp({ embeds: [useEmbed(res._data.tracks[0], "error")] })
         }
       }
-    } catch (e) {
-      console.log(`[BOT] ${config.messages.play[6].unsupported}`)
-      interaction.followUp({ embeds: [useEmbed(res._data.tracks[0], "error")] })
     }
-  }
+    
 }
 
 function isURL(str) {

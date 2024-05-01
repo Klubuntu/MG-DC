@@ -16,6 +16,16 @@ function useEmbed(track, name) {
         { name: config.messages.play[4].publish_date, value: track.__metadata.uploadedAt || config.messages.play[5].unknown, inline: true },
       ],
    };
+   addPlaylistEmbedData = {
+      color: 0x26d9a0,
+      title: `${getEmoji("clock")} ${config.messages.playlist[0].add}`,
+      url: track.url,
+      desc: "**Other songs from playlist added to play**\nby Manager :cd: https://manager-discord.netlify.app",
+      img: track.thumbnail,
+      fields: [
+        {name: config.messages.play[2].playing_from, value: ":headphones: "+ trackSourceFormatted, inline: true},
+      ],
+   };
    skipEmbedData = {
       color: 0xde703a,
       title: `${getEmoji("skip")} ${config.messages.skip[0].skipped}`
@@ -52,6 +62,9 @@ function useEmbed(track, name) {
    else if(name == "add"){
       embedName = eval("playEmbedData")
       embedName.title = `${getEmoji("clock")} ${config.messages.queue[2].added} ${track.title}`
+   }
+   else if(name == "playlistAdd"){
+      embedName = eval("addPlaylistEmbedData")
    }
    else{
       embedName = eval(name + "EmbedData")
